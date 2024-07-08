@@ -244,6 +244,10 @@ void analyzeFF_eicrecon5(){
         double q2_1;
         double scatElecEnergMC;
         double scatElecEnergChPct;
+        double ixb;
+        double ixv;
+        double ixb1;
+        double ixv1;
     
         while(getline(fileListStream, fileName)){
             
@@ -453,16 +457,16 @@ void analyzeFF_eicrecon5(){
                     h5_pz_MC->Fill(ijpsi.Pz());
                     h5_e_MC->Fill(ijpsi.E());
                     
-                    // Incident electron
-                    mctrk2.SetXYZM(mc_px_array[0], mc_py_array[0], mc_pz_array[0],mc_mass_array[0]);
-                    
                     TLorentzVector diff3 = incbeam - vec1;
                     t3 = -1*diff3.Dot(diff3);//for MC
                     mtgg->Fill(t3);
-                    double ixb = q2/(2.0 * incbeam.Dot(iphoton));//mc
+                    ixb = q2/(2.0 * incbeam.Dot(iphoton));//mc
                     xb->Fill(ixb);
-                    double ixv = (q2 + ijpsi.M()*ijpsi.M())/(2.0 * incbeam.Dot(iphoton));
+                    ixv = (q2 + ijpsi.M()*ijpsi.M())/(2.0 * incbeam.Dot(iphoton));
                     xv->Fill(ixv);
+                    
+                    JPsi1 = vec2 + vecjpsi;
+                    JPsiMass1->Fill(JPsi1.M());
                     
                     //roman pots reco tracks
                     for(int iRPPart = 0; iRPPart < reco_RP_px.GetSize(); iRPPart++){
@@ -489,9 +493,12 @@ void analyzeFF_eicrecon5(){
                                     h_rp_occupancy_map->Fill(global_hit_RP_x[iRPPart], global_hit_RP_y[iRPPart]);
                                     iflagproton = 1;
                             }
+                            if (iflagproton == 0){
+                                break;
+                            }
                             //}
                         }
-                        break;
+                        
                     }
                     
                     //OMD reco tracks
@@ -515,6 +522,7 @@ void analyzeFF_eicrecon5(){
                                 
                                 h_omd_occupancy_map->Fill(global_hit_OMD_x[iOMDPart], global_hit_OMD_y[iOMDPart]);
                             }
+                        break;
                         //}
                     }
                     
@@ -581,6 +589,7 @@ void analyzeFF_eicrecon5(){
                                 h_pz_reco_track->Fill(prec_reco_tracks.Pz());
                                 h_e_reco_track->Fill(prec_reco_tracks.E());
                             }
+                        break;
                         //}
                         
                     }
@@ -601,10 +610,6 @@ void analyzeFF_eicrecon5(){
                      h_ZDC_emcal_cluster_energy->Fill(hit_deposited_energy);
                      
                      }*/
-                    
-                    JPsi1 = vec2 + vecjpsi;
-                    
-                    JPsiMass1->Fill(JPsi1.M());
                     
                     iEvent++;
                     
@@ -739,36 +744,6 @@ void analyzeFF_eicrecon5(){
                             
                         }
                         
-                        if(reco_track_x.GetSize() == 2){
-                            if(reco_track_pdg[0] == 11 && reco_track_pdg[1] == -11){
-                                rcpv1.SetXYZM(reco_track_x[0], reco_track_y[0], reco_track_z[0],reco_track_m[0]);
-                                rcpv2.SetXYZM(reco_track_x[1], reco_track_y[1], reco_track_z[1],reco_track_m[1]);
-                                rcElectronjpsieta->Fill(rcpv1.Eta());
-                                rcElectronjpsipt->Fill(rcpv1.Pt());
-                                
-                                flag1++;
-                            }
-                            if(reco_track_pdg[0] == -11 && reco_track_pdg[1] == 11){
-                                rcpv1.SetXYZM(reco_track_x[1], reco_track_y[1], reco_track_z[1],reco_track_m[1]);
-                                rcpv2.SetXYZM(reco_track_x[0], reco_track_y[0], reco_track_z[0],reco_track_m[0]);
-                                rcElectronjpsieta->Fill(rcpv1.Eta());
-                                rcElectronjpsipt->Fill(rcpv1.Pt());
-                                
-                                flag1++;
-                            }
-                            if(reco_track_pdg[0] == 11 && reco_track_pdg[1] == 11){
-                               rcpv1.SetXYZM(reco_track_x[1], reco_track_y[1], reco_track_z[1],reco_track_m[1]);
-                                eq1.SetXYZM(reco_track_x[0], reco_track_y[0], reco_track_z[0],reco_track_m[0]);
-                                rcElectron->Fill(eq1.Eta());
-                                rcElectronpt->Fill(eq1.Pt());
-                                rcElectronjpsieta->Fill(rcpv1.Eta());
-                                rcElectronjpsipt->Fill(rcpv1.Pt());
-                                
-                                flag1++;
-                            }
-                            
-                        }
-                        
                     }
                     
                     scatElecEnergChPct = eq1.E();
@@ -802,8 +777,8 @@ void analyzeFF_eicrecon5(){
                     
                     TLorentzVector diff1 = incbeam - vec5;
                     t1 = -1*diff1.Dot(diff1);//for RP
-                    double ixb1 = q2_1/(2.0 * incbeam.Dot(iphoton));//recon
-                    double ixv1 = (q2_1 + ijpsi.M()*ijpsi.M())/(2.0 * incbeam.Dot(iphoton));
+                    ixb1 = q2_1/(2.0 * incbeam.Dot(iphoton));//recon
+                    ixv1 = (q2_1 + ijpsi.M()*ijpsi.M())/(2.0 * incbeam.Dot(iphoton));
                     
                     if (iflagproton == 1){
                         mtg->Fill(t1);
@@ -1031,14 +1006,14 @@ void analyzeFF_eicrecon5(){
     rp4->Draw();
     rp4->GetLowerRefYaxis()->SetTitle("ratio");
     rp4->GetLowerRefGraph()->SetMinimum(0);
-    rp4->GetLowerRefGraph()->SetMaximum(3.5);
+    rp4->GetLowerRefGraph()->SetMaximum(2.5);
     rp4->SetSeparationMargin(0.0);
     rp4->GetLowerRefGraph()->SetMarkerStyle(8);
     
     rp4->GetUpperPad()->cd();
     TLegend *leg2 = new TLegend(0.6, 0.8, 0.9, 0.9);
-    leg2->AddEntry(mtgg, "MC Particles", "p");
-    leg2->AddEntry(mtg,"RP - reconstructed", "l");
+    leg2->AddEntry(mtgg, "MC", "p");
+    leg2->AddEntry(mtg,"RP - Recon.", "l");
     //leg2->AddEntry(mta,"Afterburned", "l");
     leg2->Draw();
     
@@ -1206,7 +1181,7 @@ void analyzeFF_eicrecon5(){
     rp3->Draw();
     rp3->GetLowerRefYaxis()->SetTitle("ratio");
     rp3->GetLowerRefGraph()->SetMinimum(0);
-    rp3->GetLowerRefGraph()->SetMaximum(2);
+    rp3->GetLowerRefGraph()->SetMaximum(1);
     rp3->SetSeparationMargin(0.0);
     rp3->GetLowerRefGraph()->SetMarkerStyle(8);
     
@@ -1277,7 +1252,7 @@ void analyzeFF_eicrecon5(){
     rp2->Draw();
     rp2->GetLowerRefYaxis()->SetTitle("ratio");
     rp2->GetLowerRefGraph()->SetMinimum(0);
-    rp2->GetLowerRefGraph()->SetMaximum(1.5);
+    rp2->GetLowerRefGraph()->SetMaximum(1);
     rp2->SetSeparationMargin(0.0);
     rp2->GetLowerRefGraph()->SetMarkerStyle(8);
     
