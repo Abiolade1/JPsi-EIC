@@ -423,12 +423,12 @@ void analyzeFF_eicrecon5(){
                     h4_e_MC->Fill(vec7.E());
                     
                     //for the incoming proton
-                    iproton.SetXYZM(mc_px_array[3], mc_py_array[3], mc_pz_array[3],mc_mass_array[3]);
+                    //iproton.SetXYZM(mc_px_array[3], mc_py_array[3], mc_pz_array[3],mc_mass_array[3]);
                     //pT cut at 200MeV
-                    if (iproton.Pt() >= 0.2){
-                        jproton = iproton;
-                    }
-                    iproton.RotateY(0.025);
+                    //if (iproton.Pt() >= 0.2){
+                      //  jproton = iproton;
+                    //}
+                    
                     h3_eta_MC->Fill(iproton.Eta());
                     h3_px_MC->Fill(iproton.Px());
                     h3_py_MC->Fill(iproton.Py());
@@ -455,6 +455,14 @@ void analyzeFF_eicrecon5(){
                     
                     // Incident electron
                     mctrk2.SetXYZM(mc_px_array[0], mc_py_array[0], mc_pz_array[0],mc_mass_array[0]);
+                    
+                    TLorentzVector diff3 = incbeam - vec1;
+                    t3 = -1*diff3.Dot(diff3);//for MC
+                    mtgg->Fill(t3);
+                    double ixb = q2/(2.0 * incbeam.Dot(iphoton));//mc
+                    xb->Fill(ixb);
+                    double ixv = (q2 + ijpsi.M()*ijpsi.M())/(2.0 * incbeam.Dot(iphoton));
+                    xv->Fill(ixv);
                     
                     //roman pots reco tracks
                     for(int iRPPart = 0; iRPPart < reco_RP_px.GetSize(); iRPPart++){
@@ -793,34 +801,13 @@ void analyzeFF_eicrecon5(){
                     }
                     
                     TLorentzVector diff1 = incbeam - vec5;
-                    TLorentzVector diff3 = incbeam - vec1;
                     t1 = -1*diff1.Dot(diff1);//for RP
-                    
-                    t3 = -1*diff3.Dot(diff3);//for MC
+                    double ixb1 = q2_1/(2.0 * incbeam.Dot(iphoton));//recon
+                    double ixv1 = (q2_1 + ijpsi.M()*ijpsi.M())/(2.0 * incbeam.Dot(iphoton));
                     
                     if (iflagproton == 1){
                         mtg->Fill(t1);
-                    }
-                    //black plot
-                    mtgg->Fill(t3);//
-                    
-                    //PositfJpsi->Fill(EcalPPhi());
-            
-                    //calculate x_Bjorken here
-                    double ixb = q2/(2.0 * iproton.Dot(iphoton));//mc
-                    double ixb1 = q2_1/(2.0 * jproton.Dot(iphoton));//recon
-                    
-                    xb->Fill(ixb);
-                    if (iflagproton == 0){
                         xb1->Fill(ixb1);
-                    }
-                    
-                    //evaluate x_v
-                    double ixv = (q2 + ijpsi.M()*ijpsi.M())/(2.0 * iproton.Dot(iphoton));
-                    double ixv1 = (q2_1 + ijpsi.M()*ijpsi.M())/(2.0 * jproton.Dot(iphoton));
-                    
-                    xv->Fill(ixv);
-                    if (iflagproton == 1){
                         xv1->Fill(ixv1);
                     }
                     
@@ -1261,7 +1248,7 @@ void analyzeFF_eicrecon5(){
     rp1->Draw();
     rp1->GetLowerRefYaxis()->SetTitle("ratio");
     rp1->GetLowerRefGraph()->SetMinimum(0);
-    rp1->GetLowerRefGraph()->SetMaximum(1);
+    rp1->GetLowerRefGraph()->SetMaximum(5);
     rp1->SetSeparationMargin(0.0);
     rp1->GetLowerRefGraph()->SetMarkerStyle(8);
    
