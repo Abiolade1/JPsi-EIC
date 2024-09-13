@@ -29,49 +29,52 @@ void analyzeFF_eicrecon5(){
         fileListStream.open(fileList);
         if(!fileListStream) { cout << "NO_LIST_FILE " << fileList << endl; return;}
         
-        TLorentzVector vec1(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector vec2(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector vec3(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector vec4(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector vec5(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector vec6(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector vec7(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector vec1;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector vec2;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector vec3;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector vec4;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector vec5;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector vec6;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector vec7;//(10.0, 20.0, 30.0, 40.0);
     
-        TLorentzVector vecjpsi(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector vecjpsi;//(10.0, 20.0, 30.0, 40.0);
     
-        TLorentzVector JPsi1(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector JPsi2(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector JPsi22(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector JPsi222(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector JPsi1;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector JPsi2;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector JPsi22;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector JPsi222;//(10.0, 20.0, 30.0, 40.0);
     
-        TLorentzVector rcpv1(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector rcpv11(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector rcpv2(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector rcpv22(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector rcpv3(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector rcpv4(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector scte(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector incbeam(10.0, 20.0, 30.0, 40.0); //proton
-        TLorentzVector incbeame(10.0, 20.0, 30.0, 40.0);//electron
-        TLorentzVector beamProton(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector mcProton(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector scatProton(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector scatElectron(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector rcpv1;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector rcpv11;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector rcpv2;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector rcpv22;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector rcpv3;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector rcpv4;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector scte;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector incbeam;//(10.0, 20.0, 30.0, 40.0); //proton
+    TLorentzVector incbeame;//(10.0, 20.0, 30.0, 40.0);//electron
+    TLorentzVector beamProton;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector mcProton;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector scatProton;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector scatElectron;//(10.0, 20.0, 30.0, 40.0);
     
+    TLorentzVector eq1;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector eq2;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector eq3;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector eq4;//(10.0, 20.0, 30.0, 40.0);
     
-        TLorentzVector eq1(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector eq2(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector eq3(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector eq4(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector mctrk2;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector iphoton;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector iproton;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector jproton;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector ijpsi;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector jjpsi;//(10.0, 20.0, 30.0, 40.0);
     
-        TLorentzVector mctrk2(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector iphoton(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector iproton(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector jproton(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector ijpsi(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector mctrue;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector afburn;//(10.0, 20.0, 30.0, 40.0);
     
-        TLorentzVector mctrue(10.0, 20.0, 30.0, 40.0);
-        TLorentzVector afburn(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector mchfs;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector rchfs;//(10.0, 20.0, 30.0, 40.0);
         
         TH1D *fElectron = new TH1D("fElectron","fe", 100, -10, 10);
         TH1D *jpsiElectron = new TH1D("jpsiElectron","jpsie", 100, -10, 10);
@@ -84,6 +87,11 @@ void analyzeFF_eicrecon5(){
         TH1D *rcElectron= new TH1D("rcElectron","rcElectron", 100, -10, 10);
         TH1D *rcPositron= new TH1D("rcPositron","rcPositron", 100, -10, 10);
         
+        TH1D *diffjpsimass = new TH1D("diffjpsimass","diffjpsimass", 500, -2, 2);
+        TH1D *diffx_v = new TH1D("diffx_v","diffx_v", 500, -0.02, 0.02);
+        TH1D *difft = new TH1D("difft","difft", 500, -1, 1);
+        TH1D *diffq2 = new TH1D("diffq2","diffq2", 500, -10, 10);
+    
         TH1D *JPsiMass1 = new TH1D("JPsiMass1","J/#psi-Mass", 500, -10, 30);
         TH1D *rcJPsiMass1 = new TH1D("rcJPsiMass1","rcJ/#psi-Mass", 500, -10, 30);
         TH1D *rcJPsiMass11 = new TH1D("rcJPsiMass11","rcJ/#psi-Mass", 500, -10, 30);
@@ -109,6 +117,62 @@ void analyzeFF_eicrecon5(){
         TH1D* rcElectronjpsipt = new TH1D("rcElectronjpsipt", ";p_{t} [GeV/c]", 100, -10,10.0);
         TH1D* rcElectronjpsieta = new TH1D("rcElectronjpsieta",";Pseudorapidity, #eta",100,-10,10.0);
         TH1D* rcPositroneta = new TH1D("rcPositroneta",";Pseudorapidity, #eta",100,-10,10.0);
+    
+        TH1D* mcjpsie_e_minus_pz = new TH1D("mcjpsie_e_minus_pz","mcjpsie_e_minus_pz",100, -50, 150.0);
+        TH1D* mcjpsipos_e_minus_pz = new TH1D("mcjpsipos_e_minus_pz","mcjpsipos_e_minus_pz",100, -50, 150.0);
+        TH1D* rcjpsie_e_minus_pz = new TH1D("rcjpsie_e_minus_pz","rcjpsie_e_minus_pz",100, -50, 150.0);
+        TH1D* rcjpsipos_e_minus_pz = new TH1D("rcjpsipos_e_minus_pz","rcjpsipos_e_minus_pz",100, -50, 150.0);
+        TH1D* mcsce_e_minus_pz = new TH1D("mcsce_e_minus_pz","mcsce_e_minus_pz",100, -50, 150.0);
+        TH1D* rcsce_e_minus_pz = new TH1D("rcsce_e_minus_pz","rcsce_e_minus_pz",100, -50, 150.0);
+        TH1D* djpsicheck_e_minus_pz = new TH1D("djpsicheck_e_minus_pz","djpsicheck_e_minus_pz",100, -50, 150.0);
+    
+        TH1D* mcjpsitwoenergy = new TH1D("mcjpsitwoenergy","mcjpsitwoenergy",100, -50, 150.0);
+        TH1D* mcsctwoenergy = new TH1D("mcsctwoenergy","mcsctwoenergy",100, -50, 150.0);
+        TH1D* rcjpsitwoenergy = new TH1D("rcjpsitwoenergy","rcjpsitwoenergy",100, -50, 150.0);
+        TH1D* rcsctwoenergy = new TH1D("rcsctwoenergy","rcsctwoenergy",100, -50, 150.0);
+    
+        TH2D* mcjpsie_pt_vs_eta = new TH2D("mcjpsie_pt_vs_eta","mcjpsie_pt_vs_eta",100,-10,10.0,100,0,20.0);
+        TH2D* rcjpsie_pt_vs_eta = new TH2D("rcjpsie_pt_vs_eta","rcjpsie_pt_vs_eta",100,-10,10.0,100,0,20.0);
+        TH2D* mcjpsie_pz_vs_eta = new TH2D("mcjpsie_pz_vs_eta","mcjpsie_pz_vs_eta",100,-10,10.0,100, -20, 100.0);
+        TH2D* rcjpsie_pz_vs_eta = new TH2D("rcjpsie_pz_vs_eta","rcjpsie_pz_vs_eta",100,-10,10.0,100, -20, 100.0);
+    
+        TH2D* mcjpsie_e_vs_eta = new TH2D("mcjpsie_e_vs_eta","mcjpsie_e_vs_eta",100,-10,10.0,100,-5,100.0);
+        TH2D* rcjpsie_e_vs_eta = new TH2D("rcjpsie_e_vs_eta","rcjpsie_e_vs_eta",100,-10,10.0,100,-5,100.0);
+        TH2D* mcsce_e_vs_eta = new TH2D("mcsce_e_vs_eta","mcsce_e_vs_eta",100,-10,10.0,100, -5, 100);
+        TH2D* rcsce_e_vs_eta = new TH2D("rcsce_e_vs_eta","rcsce_e_vs_eta",100,-10,10.0,100, -5, 100);
+        
+        TH2D* mcsce_pt_vs_eta = new TH2D("mcsce_pt_vs_eta","mcsce_pt_vs_eta",100,-10,10.0,100,0,20.0);
+        TH2D* rcsce_pt_vs_eta = new TH2D("rcsce_pt_vs_eta","rcsce_pt_vs_eta",100,-10,10.0,100,0,20.0);
+        TH2D* mcsce_pz_vs_eta = new TH2D("mcsce_pz_vs_eta","mcsce_pz_vs_eta",100,-10,10.0,100, -20, 100.0);
+        TH2D* rcsce_pz_vs_eta = new TH2D("rcsce_pz_vs_eta","rcsce_pz_vs_eta",100,-10,10.0,100, -20, 100.0);
+        
+        TH2D* mcjpsie_e_vs_pz = new TH2D("mcjpsie_e_vs_pz","mcjpsie_e_vs_pz",100, -50, 150.0,100,-20, 150);
+        TH2D* mcjpsipos_e_vs_pz = new TH2D("mcjpsipos_e_vs_pz","mcjpsipos_e_vs_pz",100, -50, 150.0,100,-20, 150);
+        TH2D* rcjpsie_e_vs_pz = new TH2D("rcjpsie_e_vs_pz","rcjpsie_e_vs_pz",100, -50, 150.0,100,-20, 150);
+        TH2D* rcjpsipos_e_vs_pz = new TH2D("rcjpsipos_e_vs_pz","rcjpsipos_e_vs_pz",100, -50, 150.0,100,-20, 150);
+        TH2D* mcsce_e_vs_pz = new TH2D("mcsce_e_vs_pz","mcsce_e_vs_pz",100, -50, 150.0,100, -20, 150);
+        TH2D* rcsce_e_vs_pz = new TH2D("rcsce_e_vs_pz","rcsce_e_vs_pz",100, -50, 150.0,100, -20, 150);
+    
+        TH2D* mcjpsie_theta_vs_phi = new TH2D("mcjpsie_theta_vs_phi","mcjpsie_theta_vs_phi",200,-50, 150.0,200,-20, 150);
+        TH2D* mcjpsipos_theta_vs_phi = new TH2D("mcjpsipos_theta_vs_phi","mcjpsipos_theta_vs_phi",200,-50, 150.0,200,-20, 150);
+        TH2D* mcsce_theta_vs_phi = new TH2D("mcsce_theta_vs_phi","mcsce_theta_vs_phi",200,-50, 150.0,200,-20, 150);
+        TH2D* rcjpsie_theta_vs_phi = new TH2D("rcjpsie_theta_vs_phi","rcjpsie_theta_vs_phi",200,-50, 150.0,200,-20, 150);
+        TH2D* rcjpsipos_theta_vs_phi = new TH2D("rcjpsipos_theta_vs_phi","rcjpsipos_theta_vs_phi",200,-50, 150.0,200,-20, 150);
+        TH2D* rcsce_theta_vs_phi = new TH2D("rcsce_theta_vs_phi","rcsce_theta_vs_phi",200,-50, 150.0,200,-20, 150);
+    
+        TH2D* mcjpsie_phi_vs_eta = new TH2D("mcjpsie_phi_vs_eta","mcjpsie_phi_vs_eta",200,-50, 150.0,200,-20, 150);
+        TH2D* mcjpsipos_phi_vs_eta = new TH2D("mcjpsipos_phi_vs_eta","mcjpsipos_phi_vs_eta",200,-50, 150.0,200,-20, 150);
+        TH2D* mcsce_phi_vs_eta = new TH2D("mcsce_phi_vs_eta","mcsce_phi_vs_eta",200,-50, 150.0,200,-20, 150);
+        TH2D* rcjpsie_phi_vs_eta = new TH2D("rcjpsie_phi_vs_eta","rcjpsie_phi_vs_eta",200,-50, 150.0,200,-20, 150);
+        TH2D* rcjpsipos_phi_vs_eta = new TH2D("rcjpsipos_phi_vs_eta","rcjpsipos_phi_vs_eta",200,-50, 150.0,200,-20, 150);
+        TH2D* rcsce_phi_vs_eta = new TH2D("rcsce_phi_vs_eta","rcsce_phi_vs_eta",200,-50, 150.0,200,-20, 150);
+        
+        TH2D* mcjpsie_phi_vs_e = new TH2D("mcjpsie_phi_vs_e","mcjpsie_phi_vs_e",200,-50, 150.0,200,-20, 150);
+        TH2D* mcjpsipos_phi_vs_e = new TH2D("mcjpsipos_phi_vs_e","mcjpsipos_phi_vs_e",200,-50, 150.0,200,-20, 150);
+        TH2D* mcsce_phi_vs_e = new TH2D("mcsce_phi_vs_e","mcsce_phi_vs_e",200,-50, 150.0,200,-20, 150);
+        TH2D* rcjpsie_phi_vs_e = new TH2D("rcjpsie_phi_vs_e","rcjpsie_phi_vs_e",200,-50, 150.0,200,-20, 150);
+        TH2D* rcjpsipos_phi_vs_e = new TH2D("rcjpsipos_phi_vs_e","rcjpsipos_phi_vs_e",200,-50, 150.0,200,-20, 150);
+        TH2D* rcsce_phi_vs_e = new TH2D("rcsce_phi_vs_e","rcsce_phi_vs_e",200,-50, 150.0,200,-20, 150);
     
         //--------------------------------------------------------------------------
         
@@ -136,7 +200,7 @@ void analyzeFF_eicrecon5(){
         TH1D* h7_e_MC = new TH1D("e7_MC", ";E [GeV]", 100, 0.0, 320.0);
         
         //fElectron
-        TH1D* h8_eta_MC = new TH1D("h8_eta",";Pseudorapidity, #eta",100,0.0,15.0);
+        TH1D* h8_eta_MC = new TH1D("h8_eta",";Pseudorapidity, #eta",100,-10,10.0);
         TH1D* h8_px_MC = new TH1D("px8_MC", ";p_{x} [GeV/c]", 100, -10.0, 10.0);
         TH1D* h8_py_MC = new TH1D("py8_MC", ";p_{y} [GeV/c]", 100, -10.0, 10.0);
         TH1D* h8_pt_MC = new TH1D("pt8_MC", ";p_{t} [GeV/c]", 100, -10, 10.0);
@@ -323,11 +387,17 @@ void analyzeFF_eicrecon5(){
             TTreeReaderArray<float> reco_track_m = {tree_reader, "ReconstructedChargedParticles.mass"};
             TTreeReaderArray<float> reco_track_c = {tree_reader, "ReconstructedChargedParticles.charge"};
             
-            TTreeReaderArray<int> recop_pdg = {tree_reader, "ReconstructedChargedParticles.PDG"};
+            TTreeReaderArray<float> recop_p_x = {tree_reader, "ReconstructedParticles.momentum.x"};
+            TTreeReaderArray<float> recop_p_y = {tree_reader, "ReconstructedParticles.momentum.y"};
+            TTreeReaderArray<float> recop_p_z = {tree_reader, "ReconstructedParticles.momentum.z"};
+            TTreeReaderArray<float> recop_p_m = {tree_reader, "ReconstructedParticles.mass"};
+            TTreeReaderArray<int> recop_p_pdg = {tree_reader, "ReconstructedParticles.PDG"};
+            
+            /*TTreeReaderArray<int> recop_pdg = {tree_reader, "ReconstructedChargedParticles.PDG"};
             TTreeReaderArray<float> recop_px = {tree_reader, "ReconstructedChargedParticles.momentum.x"};
             TTreeReaderArray<float> recop_py = {tree_reader, "ReconstructedChargedParticles.momentum.y"};
             TTreeReaderArray<float> recop_pz = {tree_reader, "ReconstructedChargedParticles.momentum.z"};
-            TTreeReaderArray<float> recop_m = {tree_reader, "ReconstructedChargedParticles.mass"};
+            TTreeReaderArray<float> recop_m = {tree_reader, "ReconstructedChargedParticles.mass"};*/
             
             
             //ZDC EMCAL
@@ -344,7 +414,7 @@ void analyzeFF_eicrecon5(){
             
             while (tree_reader.Next()) {
                 
-                /*cout <<"  "<< endl;
+                 /*cout <<"  "<< endl;
                  cout << "Reading event: " << iEvent << endl;
                  cout <<"_____________________________"<< endl;*/
                 
@@ -432,7 +502,6 @@ void analyzeFF_eicrecon5(){
                     //if (iproton.Pt() >= 0.2){
                       //  jproton = iproton;
                     //}
-                    
                     h3_eta_MC->Fill(iproton.Eta());
                     h3_px_MC->Fill(iproton.Px());
                     h3_py_MC->Fill(iproton.Py());
@@ -457,6 +526,8 @@ void analyzeFF_eicrecon5(){
                     h5_pz_MC->Fill(ijpsi.Pz());
                     h5_e_MC->Fill(ijpsi.E());
                     
+                    //cout <<"Electron: " << vec3.E() << "; Proton: " << vec1.E() << "; J/Psi: " << ijpsi.E() << endl;
+                    
                     TLorentzVector diff3 = incbeam - vec1;
                     t3 = -1*diff3.Dot(diff3);//for MC
                     mtgg->Fill(t3);
@@ -468,10 +539,57 @@ void analyzeFF_eicrecon5(){
                     JPsi1 = vec2 + vecjpsi;
                     JPsiMass1->Fill(JPsi1.M());
                     
+                    mcjpsie_pt_vs_eta->Fill(vecjpsi.Eta(), vecjpsi.Pt());
+                    mcjpsie_pz_vs_eta->Fill(vecjpsi.Eta(), vecjpsi.Pz());
+                    
+                    mcsce_pt_vs_eta->Fill(vec3.Eta(), vec3.Pt());
+                    mcsce_pz_vs_eta->Fill(vec3.Eta(), vec3.Pz());
+                    
+                    mcjpsie_e_vs_eta->Fill(vecjpsi.Eta(), vecjpsi.E());
+                    mcsce_e_vs_eta->Fill(vec3.Eta(), vec3.E());
+                    
+                    mcjpsie_e_vs_pz->Fill(vecjpsi.Pz(), vecjpsi.E());
+                    mcjpsipos_e_vs_pz->Fill(vec2.Pz(), vec2.E());
+                    mcsce_e_vs_pz->Fill(vec3.Pz(), vec3.E());
+                    
+                    //applying a cut 20<E-Pz<40 GeV
+                    if (((vecjpsi + vec2 + vec3).E() - (vecjpsi + vec2 + vec3).Pz()) > 20 && ((vecjpsi + vec2 + vec3).E() - (vecjpsi + vec2 + vec3).Pz()) < 40){
+                        
+                        //mcjpsie_e_minus_pz->Fill((ijpsi + vecjpsi).E() - (ijpsi + vecjpsi).Pz());
+                        mcjpsie_e_minus_pz->Fill((vecjpsi + vec2 + vec3).E() - (vecjpsi + vec2 + vec3).Pz());
+                        //mcjpsipos_e_minus_pz->Fill(vec2.E() - vec2.Pz());
+                        //mcsce_e_minus_pz->Fill(vec3.E() - vec3.Pz());
+                        
+                        //djpsicheck_e_minus_pz->Fill(ijpsi.E() - ijpsi.Pz());
+                    }
+                    
+                    mcjpsie_theta_vs_phi->Fill(vecjpsi.Theta(), vecjpsi.Phi());
+                    mcjpsipos_theta_vs_phi->Fill(vec2.Theta(), vec2.Phi());
+                    mcsce_theta_vs_phi->Fill(vec3.Theta(), vec3.Phi());
+                    
+                    mcjpsie_phi_vs_eta->Fill(vecjpsi.Phi(), vecjpsi.Eta());
+                    mcjpsipos_phi_vs_eta->Fill(vec2.Phi(), vec2.Eta());
+                    mcsce_phi_vs_eta->Fill(vec3.Phi(), vec3.Eta());
+                    
+                    mcjpsie_phi_vs_e->Fill(vecjpsi.Phi(), vecjpsi.E());
+                    mcjpsipos_phi_vs_e->Fill(vec2.Phi(), vec2.E());
+                    mcsce_phi_vs_e->Fill(vec3.Phi(), vec3.E());
+                    
+                    mcjpsitwoenergy->Fill(2*vecjpsi.E());
+                    mcsctwoenergy->Fill(2*vec3.E());
+                    
+                    /*for (int ic = 0; ic < recop_p_x.GetSize(); ic++){
+                        ijpsi.SetXYZM(recop_p_x[ic], recop_p_y[ic], recop_p_z[ic], recop_p_m[ic]);
+                        //cout <<"Particle: " << recop_p_pdg[ic] << "; Iteration: " << ic << endl;
+                        
+                    }*/
+                    
                     //roman pots reco tracks
                     for(int iRPPart = 0; iRPPart < reco_RP_px.GetSize(); iRPPart++){
+                        //reco jpsi
                         
                         if (reco_RP_pdg[iRPPart] == 2212){
+                            jjpsi.SetXYZM(reco_RP_px[iRPPart], reco_RP_py[iRPPart], reco_RP_pz[iRPPart], reco_RP_m[iRPPart]);
                             
                             TLorentzVector prec_romanpots(reco_RP_px[iRPPart], reco_RP_py[iRPPart], reco_RP_pz[iRPPart], reco_RP_e[iRPPart]);
                             
@@ -622,8 +740,8 @@ void analyzeFF_eicrecon5(){
                          cout <<"Number of Iterations: "<< rcp <<" -> Partilcles: " << recop_pdg[rcp] << endl;}*/
                         
                         //mctrk.SetXYZ(mc_px_array[imc], mc_py_array[imc], mc_pz_array[imc]);//previous
-                        /*if(reco_track_x.GetSize()>4){
-                         cout <<"Number of Iterations: "<< rcp <<" -> Partilcles: " << reco_track_pdg[rcp] << endl;}*/
+                        //if(reco_track_x.GetSize()>4){
+                        //cout <<"Number of Iterations: "<< rcp <<" -> Partilcles: " << reco_track_pdg[rcp] << endl;
                         
                         if(reco_track_x.GetSize() == 3){
                             
@@ -631,43 +749,31 @@ void analyzeFF_eicrecon5(){
                                 
                                 if(reco_track_pdg[0] == 11 && (reco_track_pdg[1] == -11 || reco_track_pdg[2] == -11)){
                                     rcpv1.SetXYZM(reco_track_x[0], reco_track_y[0], reco_track_z[0],reco_track_m[0]);
-                                    rcElectronjpsieta->Fill(rcpv1.Eta());
-                                    rcElectronjpsipt->Fill(rcpv1.Pt());
                                     
                                     flag2++;
                                 }
                                 if(reco_track_pdg[1] == 11 && (reco_track_pdg[0] == -11 || reco_track_pdg[2] == -11)){
                                     rcpv1.SetXYZM(reco_track_x[1], reco_track_y[1], reco_track_z[1],reco_track_m[1]);
-                                    rcElectronjpsieta->Fill(rcpv1.Eta());
-                                    rcElectronjpsipt->Fill(rcpv1.Pt());
                                     
                                     flag2++;
                                 }
                                 if(reco_track_pdg[2] == 11 && (reco_track_pdg[0] == -11 || reco_track_pdg[1] == -11)){
                                     rcpv1.SetXYZM(reco_track_x[2], reco_track_y[2], reco_track_z[2],reco_track_m[2]);
-                                    rcElectronjpsieta->Fill(rcpv1.Eta());
-                                    rcElectronjpsipt->Fill(rcpv1.Pt());
                                     
                                     flag2++;
                                 }
                                 if(reco_track_pdg[0] == -11 && (reco_track_pdg[1] == 11 || reco_track_pdg[2] == 11)){
                                     rcpv2.SetXYZM(reco_track_x[0], reco_track_y[0], reco_track_z[0],reco_track_m[0]);
-                                    rcPositron->Fill(rcpv2.Eta());
-                                    rcPositronpt->Fill(rcpv2.Pt());
-                                    
+                                   
                                     flag2++;
                                 }
                                 if(reco_track_pdg[1] == -11 && (reco_track_pdg[0] == 11 || reco_track_pdg[2] == 11)){
                                     rcpv2.SetXYZM(reco_track_x[1], reco_track_y[1], reco_track_z[1],reco_track_m[1]);
-                                    rcPositron->Fill(rcpv2.Eta());
-                                    rcPositronpt->Fill(rcpv2.Pt());
-                                    
+                                   
                                     flag2++;
                                 }
                                 if(reco_track_pdg[2] == -11 && (reco_track_pdg[0] == 11 || reco_track_pdg[1] == 11)){
                                     rcpv2.SetXYZM(reco_track_x[2], reco_track_y[2], reco_track_z[2],reco_track_m[2]);
-                                    rcPositron->Fill(rcpv2.Eta());
-                                    rcPositronpt->Fill(rcpv2.Pt());
                                     
                                     flag2++;
                                 }
@@ -686,13 +792,6 @@ void analyzeFF_eicrecon5(){
                                         rcpv2.SetXYZM(reco_track_x[2], reco_track_y[2], reco_track_z[2],reco_track_m[2]);
                                         rcpv22.SetXYZM(reco_track_x[2], reco_track_y[2], reco_track_z[2],reco_track_m[2]);
                                         
-                                        rcElectron->Fill(eq1.Eta());
-                                        rcElectronpt->Fill(eq1.Pt());
-                                        rcPositron->Fill(rcpv2.Eta());
-                                        rcPositronpt->Fill(rcpv2.Pt());
-                                        rcElectronjpsieta->Fill(rcpv1.Eta());
-                                        rcElectronjpsipt->Fill(rcpv1.Pt());
-                                        
                                     }
                                     flag3++;
                                     
@@ -708,13 +807,6 @@ void analyzeFF_eicrecon5(){
                                         rcpv2.SetXYZM(reco_track_x[1], reco_track_y[1], reco_track_z[1],reco_track_m[1]);
                                         rcpv22.SetXYZM(reco_track_x[1], reco_track_y[1], reco_track_z[1],reco_track_m[1]);
                                         
-                                        rcElectron->Fill(eq1.Eta());
-                                        rcPositron->Fill(rcpv2.Eta());
-                                        rcPositronpt->Fill(rcpv2.Pt());
-                                        rcElectronpt->Fill(eq1.Pt());
-                                        rcElectronjpsieta->Fill(rcpv1.Eta());
-                                        rcElectronjpsipt->Fill(rcpv1.Pt());
-                                        
                                     }
                                     flag3++;
                                 }
@@ -729,12 +821,6 @@ void analyzeFF_eicrecon5(){
                                         rcpv2.SetXYZM(reco_track_x[0], reco_track_y[0], reco_track_z[0],reco_track_m[0]);
                                         rcpv22.SetXYZM(reco_track_x[0], reco_track_y[0], reco_track_z[0],reco_track_m[0]);
                                         
-                                        rcElectron->Fill(eq1.Eta());
-                                        rcPositron->Fill(rcpv2.Eta());
-                                        rcPositronpt->Fill(rcpv2.Pt());
-                                        rcElectronpt->Fill(eq1.Pt());
-                                        rcElectronjpsieta->Fill(rcpv1.Eta());
-                                        rcElectronjpsipt->Fill(rcpv1.Pt());
                                     }
                                     flag3++;
                                 }
@@ -773,6 +859,7 @@ void analyzeFF_eicrecon5(){
                         
                         JPsi2 = rcpv1 + rcpv2;
                         rcJPsiMass1->Fill(JPsi2.M());
+                        diffjpsimass->Fill(JPsi1.M() - JPsi2.M());
                     }
                     
                     TLorentzVector diff1 = incbeam - vec5;
@@ -784,6 +871,56 @@ void analyzeFF_eicrecon5(){
                         mtg->Fill(t1);
                         xb1->Fill(ixb1);
                         xv1->Fill(ixv1);
+                        
+                        difft->Fill(t3 - t1);
+                        diffq2->Fill(q2 - q2_1);
+                        diffx_v->Fill(ixv - ixv1);
+                    }
+                    if (flag2 == 0 && flag3 == 0){
+                        rcElectron->Fill(eq1.Eta());
+                        rcPositron->Fill(rcpv2.Eta());
+                        rcPositronpt->Fill(rcpv2.Pt());
+                        rcElectronpt->Fill(eq1.Pt());
+                        rcElectronjpsieta->Fill(rcpv1.Eta());
+                        rcElectronjpsipt->Fill(rcpv1.Pt());
+                        rcjpsie_pt_vs_eta->Fill(rcpv1.Eta(), rcpv1.Pt());
+                        rcjpsie_pz_vs_eta->Fill(rcpv1.Eta(), rcpv1.Pz());
+                        rcsce_pt_vs_eta->Fill(eq1.Eta(), eq1.Pt());
+                        rcsce_pz_vs_eta->Fill(eq1.Eta(), eq1.Pz());
+                        
+                        rcjpsie_e_vs_eta->Fill(rcpv1.Eta(), rcpv1.E());
+                        rcsce_e_vs_eta->Fill(eq1.Eta(), eq1.E());
+                        
+                        rcjpsie_e_vs_pz->Fill(rcpv1.Pz(), rcpv1.E());
+                        rcjpsipos_e_vs_pz->Fill(rcpv2.Pz(), rcpv2.E());
+                        rcsce_e_vs_pz->Fill(eq1.Pz(), eq1.E());
+                        
+                        //applying a cut 20<E-pz<40 GeV
+                        if (((rcpv1 + rcpv2 + eq1).E() - (rcpv1 + rcpv2 + eq1).Pz()) > 20 && ((rcpv1 + rcpv2 + eq1).E() - (rcpv1 + rcpv2 + eq1).Pz()) < 40){
+                            
+                            rcjpsie_e_minus_pz->Fill((rcpv1 + rcpv2 + eq1).E() - (rcpv1 + rcpv2 + eq1).Pz());
+                            //rcjpsie_e_minus_pz->Fill(rcpv1.E() - rcpv1.Pz());
+                            //rcjpsipos_e_minus_pz->Fill(rcpv2.E() - rcpv2.Pz());
+                            //rcsce_e_minus_pz->Fill(eq1.E() - eq1.Pz());
+                        }
+                        
+                        rcjpsie_theta_vs_phi->Fill(rcpv1.Theta(), rcpv1.Phi());
+                        rcjpsipos_theta_vs_phi->Fill(rcpv2.Theta(), rcpv2.Phi());
+                        rcsce_theta_vs_phi->Fill(eq1.Theta(), eq1.Phi());
+                        
+                        rcjpsie_phi_vs_eta->Fill(rcpv1.Phi(), rcpv1.Eta());
+                        rcjpsipos_phi_vs_eta->Fill(rcpv2.Phi(), rcpv2.Eta());
+                        rcsce_phi_vs_eta->Fill(eq1.Phi(), eq1.Eta());
+                        
+                        rcjpsie_phi_vs_e->Fill(rcpv1.Phi(), rcpv1.E());
+                        rcjpsipos_phi_vs_e->Fill(rcpv2.Phi(), rcpv2.E());
+                        rcsce_phi_vs_e->Fill(eq1.Phi(), eq1.E());
+                        
+                        //cout <<"Electron: " << eq1.E() << "; Proton: " << vec4.E() << "; e+ep: " << (rcpv1+rcpv2).E() <<endl;
+                        
+                        rcjpsitwoenergy->Fill(2*rcpv1.E());
+                        rcsctwoenergy->Fill(2*eq1.E());
+                        
                     }
                     
                 }// Q2 if
@@ -976,13 +1113,21 @@ void analyzeFF_eicrecon5(){
     rcJPsiMass1->Draw();
     
     TCanvas *jps = new TCanvas("jps","jps",800,800);
-    rcJPsiMass1->GetXaxis()->SetTitle("Mass e^{-}e^{+} [GeV]");
-    rcJPsiMass1->GetXaxis()->SetRangeUser(2,3.6);
-    rcJPsiMass1->SetStats(0);
-    rcJPsiMass1->GetYaxis()->SetTitleSize(0.03);
+    JPsiMass1->GetXaxis()->SetTitle("Mass e^{-}e^{+} [GeV]");
+    JPsiMass1->GetXaxis()->SetRangeUser(2,3.6);
+    JPsiMass1->SetStats(0);
+    JPsiMass1->SetLineColor(1);
+    JPsiMass1->SetLineWidth(6);
+    JPsiMass1->Draw();
+    
     rcJPsiMass1->SetLineColor(2);//red plot
     rcJPsiMass1->SetLineWidth(6);
-    rcJPsiMass1->Draw();
+    rcJPsiMass1->Draw("SAME");
+    
+    TLegend *jpsi_MCReco = new TLegend(0.6, 0.8, 0.9, 0.9);
+    jpsi_MCReco->AddEntry(JPsiMass1, "MC", "l");
+    jpsi_MCReco->AddEntry(rcJPsiMass1,"Full Reconstruction", "l");
+    jpsi_MCReco->Draw();
     
     TCanvas *c5 = new TCanvas("c5","c5",800,800);
     mtg->GetXaxis()->SetTitle("-t");
@@ -1013,7 +1158,7 @@ void analyzeFF_eicrecon5(){
     rp4->GetUpperPad()->cd();
     TLegend *leg2 = new TLegend(0.6, 0.8, 0.9, 0.9);
     leg2->AddEntry(mtgg, "MC", "p");
-    leg2->AddEntry(mtg,"RP - Recon.", "l");
+    leg2->AddEntry(mtg,"Full Reconstruction", "l");
     //leg2->AddEntry(mta,"Afterburned", "l");
     leg2->Draw();
     
@@ -1085,7 +1230,7 @@ void analyzeFF_eicrecon5(){
     leg8->Draw();
     
     TCanvas *fppt = new TCanvas("fppt","fppt",1200,1200);
-    fppt->Divide(2,2);
+    fppt->Divide(4,3);
     fppt->cd(1);//p_t of the positron at the jpsi
     h7_pt_MC->GetXaxis()->SetTitle("p_{t} [GeV/c]");
     //h7_pt_MC->GetXaxis()->SetRangeUser(-0.1,3);
@@ -1105,21 +1250,31 @@ void analyzeFF_eicrecon5(){
     leg91->Draw();
     
     fppt->cd(2);//p_t of the electron at the jpsi
-    hjpsi_pt_MC->GetXaxis()->SetTitle("p_{t} [GeV/c]");
-    //hjpsi_pt_MC->GetXaxis()->SetRangeUser(-0.1,3);
-    hjpsi_pt_MC->SetStats(0);
-    hjpsi_pt_MC->GetYaxis()->SetTitleSize(0.03);
+    h8_pt_MC->GetXaxis()->SetTitle("p_{t} [GeV/c]");
+    h8_pt_MC->GetXaxis()->SetRangeUser(-0.1,4);
+    h8_pt_MC->SetStats(0);
+    h8_pt_MC->GetYaxis()->SetTitleSize(0.03);
+    h8_pt_MC->SetLineColor(4);//red plot
+    h8_pt_MC->SetLineWidth(6);
+    h8_pt_MC->Draw();
+    
     hjpsi_pt_MC->SetLineColor(1);//red plot
     hjpsi_pt_MC->SetLineWidth(6);
-    hjpsi_pt_MC->Draw();
+    hjpsi_pt_MC->Draw("SAME");
     
     rcElectronjpsipt->SetLineColor(2);//black plot
     rcElectronjpsipt->SetLineWidth(6);
     rcElectronjpsipt->Draw("SAME");
     
+    rcElectronpt->SetLineColor(3);//black plot
+    rcElectronpt->SetLineWidth(6);
+    rcElectronpt->Draw("SAME");
+    
     TLegend *leg92= new TLegend(0.8, 0.8, 0.9, 0.9);
+    leg92->AddEntry(h8_pt_MC,"MC e SC", "l");
     leg92->AddEntry(hjpsi_pt_MC,"MC e", "l");
     leg92->AddEntry(rcElectronjpsipt, "Recon. e", "l");
+    leg92->AddEntry(rcElectronpt, "Recon. e SC", "l");
     leg92->Draw();
     
     fppt->cd(3);//eta of the positron at the jpsi
@@ -1141,22 +1296,131 @@ void analyzeFF_eicrecon5(){
     leg93->Draw();
     
     fppt->cd(4);//eta of the electron at the jpsi
-    hjpsi_eta_MC->GetXaxis()->SetTitle("#eta");
-    //hjpsi_eta_MC->GetXaxis()->SetRangeUser(-0.1,3);
-    hjpsi_eta_MC->SetStats(0);
-    hjpsi_eta_MC->GetYaxis()->SetTitleSize(0.03);
+    h8_eta_MC->GetXaxis()->SetTitle("#eta");
+    //h8_eta_MC->GetYaxis()->SetRangeUser(0,3500);
+    h8_eta_MC->GetXaxis()->SetRangeUser(-10,10);
+    h8_eta_MC->SetStats(0);
+    h8_eta_MC->GetYaxis()->SetTitleSize(0.03);
+    h8_eta_MC->SetLineColor(4);//red plot
+    h8_eta_MC->SetLineWidth(6);
+    h8_eta_MC->Draw();
+    
     hjpsi_eta_MC->SetLineColor(1);//red plot
     hjpsi_eta_MC->SetLineWidth(6);
-    hjpsi_eta_MC->Draw();
+    hjpsi_eta_MC->Draw("SAME");
     
     rcElectronjpsieta->SetLineColor(2);//black plot
     rcElectronjpsieta->SetLineWidth(6);
     rcElectronjpsieta->Draw("SAME");
     
+    rcElectron->SetLineColor(3);//black plot
+    rcElectron->SetLineWidth(6);
+    rcElectron->Draw("SAME");
+    
     TLegend *leg94= new TLegend(0.8, 0.8, 0.9, 0.9);
+    leg94->AddEntry(h8_eta_MC,"MC e SC", "l");
     leg94->AddEntry(hjpsi_eta_MC,"MC e", "l");
     leg94->AddEntry(rcElectronjpsieta, "Recon. e", "l");
+    leg94->AddEntry(rcElectron, "Recon. e SC", "l");
     leg94->Draw();
+    
+    fppt->cd(5);//pt_vs_eta mc
+    mcjpsie_pt_vs_eta->GetXaxis()->SetTitle("#eta");
+    mcjpsie_pt_vs_eta->GetYaxis()->SetTitle("p_{t}");
+    //mcjpsie_pt_vs_eta->GetXaxis()->SetRangeUser(-8,8);
+    //mcjpsie_pt_vs_eta->GetYaxis()->SetRangeUser(0,6);
+    mcjpsie_pt_vs_eta->SetStats(0);
+    mcjpsie_pt_vs_eta->Draw("COLZ");
+    
+    TLegend *pteta= new TLegend(0.8, 0.8, 0.9, 0.9);
+    pteta->AddEntry(mcjpsie_pt_vs_eta,"e at jpsi - MC", "");
+    pteta->Draw();
+    
+    fppt->cd(6);//pz_vs_eta mc
+    mcjpsie_pz_vs_eta->GetXaxis()->SetTitle("#eta");
+    mcjpsie_pz_vs_eta->GetYaxis()->SetTitle("p_{z}");
+    //mcjpsie_pz_vs_eta->GetXaxis()->SetRangeUser(-8,8);
+    //mcjpsie_pz_vs_eta->GetYaxis()->SetRangeUser(0,150);
+    mcjpsie_pz_vs_eta->SetStats(0);
+    mcjpsie_pz_vs_eta->Draw("COLZ");
+    
+    
+    TLegend *pzeta= new TLegend(0.8, 0.8, 0.9, 0.9);
+    pzeta->AddEntry(mcjpsie_pz_vs_eta,"e at jpsi - MC", "");
+    pzeta->Draw();
+    
+    fppt->cd(7);//pt_vs_eta recon
+    rcjpsie_pt_vs_eta->GetXaxis()->SetTitle("#eta");
+    rcjpsie_pt_vs_eta->GetYaxis()->SetTitle("p_{t}");
+    //rcjpsie_pt_vs_eta->GetXaxis()->SetRangeUser(-8,8);
+    //rcjpsie_pt_vs_eta->GetYaxis()->SetRangeUser(0,6);
+    rcjpsie_pt_vs_eta->SetStats(0);
+    rcjpsie_pt_vs_eta->Draw("COLZ");
+    
+    TLegend *rcpteta= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcpteta->AddEntry(rcjpsie_pt_vs_eta,"e at jpsi - Recon.", "");
+    rcpteta->Draw();
+    
+    fppt->cd(8);//pz_vs_eta recon
+    rcjpsie_pz_vs_eta->GetXaxis()->SetTitle("#eta");
+    rcjpsie_pz_vs_eta->GetYaxis()->SetTitle("p_{z}");
+    //rcjpsie_pz_vs_eta->GetXaxis()->SetRangeUser(-8,8);
+    //rcjpsie_pz_vs_eta->GetYaxis()->SetRangeUser(0,150);
+    rcjpsie_pz_vs_eta->SetStats(0);
+    rcjpsie_pz_vs_eta->Draw("COLZ");
+    
+    TLegend *rcpzeta= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcpzeta->AddEntry(rcjpsie_pz_vs_eta,"e at jpsi Recon.", "");
+    rcpzeta->Draw();
+    
+    fppt->cd(9);//pt_vs_eta mc sc
+    mcsce_pt_vs_eta->GetXaxis()->SetTitle("#eta");
+    mcsce_pt_vs_eta->GetYaxis()->SetTitle("p_{t}");
+    //mcsce_pt_vs_eta->GetXaxis()->SetRangeUser(-8,8);
+    //mcsce_pt_vs_eta->GetYaxis()->SetRangeUser(0,6);
+    mcsce_pt_vs_eta->SetStats(0);
+    mcsce_pt_vs_eta->Draw("COLZ");
+    
+    TLegend *ptetasc= new TLegend(0.8, 0.8, 0.9, 0.9);
+    ptetasc->AddEntry(mcsce_pt_vs_eta,"SC e MC", "");
+    ptetasc->Draw();
+    
+    fppt->cd(10);//pz_vs_eta mc sc
+    mcsce_pz_vs_eta->GetXaxis()->SetTitle("#eta");
+    mcsce_pz_vs_eta->GetYaxis()->SetTitle("p_{z}");
+    //mcsce_pz_vs_eta->GetXaxis()->SetRangeUser(-8,8);
+    //mcsce_pz_vs_eta->GetYaxis()->SetRangeUser(0,150);
+    mcsce_pz_vs_eta->SetStats(0);
+    mcsce_pz_vs_eta->Draw("COLZ");
+    
+    
+    TLegend *pzetasc= new TLegend(0.8, 0.8, 0.9, 0.9);
+    pzetasc->AddEntry(mcsce_pz_vs_eta,"SC e MC", "");
+    pzetasc->Draw();
+    
+    fppt->cd(11);//pt_vs_eta rcc sc
+    rcsce_pt_vs_eta->GetXaxis()->SetTitle("#eta");
+    rcsce_pt_vs_eta->GetYaxis()->SetTitle("p_{t}");
+    //rcsce_pt_vs_eta->GetXaxis()->SetRangeUser(-8,8);
+    //rcsce_pt_vs_eta->GetYaxis()->SetRangeUser(0,6);
+    rcsce_pt_vs_eta->SetStats(0);
+    rcsce_pt_vs_eta->Draw("COLZ");
+    
+    TLegend *rcptetasc= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcptetasc->AddEntry(rcsce_pt_vs_eta,"SC e Recon.", "");
+    rcptetasc->Draw();
+    
+    fppt->cd(12);//pz_vs_eta rcc sc
+    rcsce_pz_vs_eta->GetXaxis()->SetTitle("#eta");
+    rcsce_pz_vs_eta->GetYaxis()->SetTitle("p_{z}");
+    //rcsce_pz_vs_eta->GetXaxis()->SetRangeUser(-8,8);
+    //rcsce_pz_vs_eta->GetYaxis()->SetRangeUser(0,150);
+    rcsce_pz_vs_eta->SetStats(0);
+    rcsce_pz_vs_eta->Draw("COLZ");
+    
+    TLegend *rcpzetasc= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcpzetasc->AddEntry(rcsce_pz_vs_eta,"SC e Recon.", "");
+    rcpzetasc->Draw();
     
     TCanvas *q_sq = new TCanvas("q_sq","q_sq",800,800);
     mtqq->GetXaxis()->SetTitle("Q^{2}");
@@ -1188,7 +1452,7 @@ void analyzeFF_eicrecon5(){
     rp3->GetUpperPad()->cd();
     TLegend *qq2= new TLegend(0.8, 0.8, 0.9, 0.9);
     qq2->AddEntry(mtq,"MC", "p");
-    qq2->AddEntry(mtqq, "Recon.", "l");
+    qq2->AddEntry(mtqq, "Full Reconstruction", "l");
     qq2->Draw();
     
     TCanvas *sc = new TCanvas("sc","sc",1200,600);
@@ -1230,7 +1494,7 @@ void analyzeFF_eicrecon5(){
     rp1->GetUpperPad()->cd();
     TLegend *xbjok= new TLegend(0.8, 0.8, 0.9, 0.9);
     xbjok->AddEntry(xb,"MC", "p");
-    xbjok->AddEntry(xb1, "Recon.", "l");
+    xbjok->AddEntry(xb1, "Full Reconstruction", "l");
     xbjok->Draw();
     
     TCanvas *x_v = new TCanvas("x_v","x_v",800,800);
@@ -1259,8 +1523,464 @@ void analyzeFF_eicrecon5(){
     rp2->GetUpperPad()->cd();
     TLegend *x_vv= new TLegend(0.8, 0.8, 0.9, 0.9);
     x_vv->AddEntry(xv,"MC", "p");
-    x_vv->AddEntry(xv1, "Recon.", "l");
+    x_vv->AddEntry(xv1, "Full Reconstruction", "l");
     x_vv->Draw();
+    
+    TCanvas *diff = new TCanvas("diff","diff",1200,1200);
+    diff->Divide(2,2);
+    diff->cd(1);
+    //diffjpsimass->GetXaxis()->SetRangeUser(-5,2);
+    diffjpsimass->Draw();
+    
+    diff->cd(2);
+    //diffq2->GetXaxis()->SetRangeUser(-0,20);
+    diffq2->Draw();
+    
+    diff->cd(3);
+    //difft->GetXaxis()->SetRangeUser(-5,2);
+    difft->Draw();
+    
+    diff->cd(4);
+    //diffx_v->GetXaxis()->SetRangeUser(-5,2);
+    diffx_v->Draw();
+    
+    TCanvas *E_vs_eta = new TCanvas("E_vs_eta","E_vs_eta",1200,1200);
+    E_vs_eta->Divide(2,2);
+    E_vs_eta->cd(1);
+    mcjpsie_e_vs_eta->GetXaxis()->SetTitle("#eta");
+    mcjpsie_e_vs_eta->GetYaxis()->SetTitle("E[GeV]");
+    //mcjpsie_e_vs_eta->GetXaxis()->SetRangeUser(-8,8);
+    //mcjpsie_e_vs_eta->GetYaxis()->SetRangeUser(0,6);
+    mcjpsie_e_vs_eta->SetStats(0);
+    mcjpsie_e_vs_eta->Draw("COLZ");
+    
+    TLegend *mceeta= new TLegend(0.8, 0.8, 0.9, 0.9);
+    mceeta->AddEntry(mcjpsie_e_vs_eta,"e at jpsi - MC", "");
+    mceeta->Draw();
+    
+    E_vs_eta->cd(2);
+    mcsce_e_vs_eta->GetXaxis()->SetTitle("#eta");
+    mcsce_e_vs_eta->GetYaxis()->SetTitle("E[GeV]");
+    //mcsce_e_vs_eta->GetXaxis()->SetRangeUser(-8,8);
+    //mcsce_e_vs_eta->GetYaxis()->SetRangeUser(0,6);
+    mcsce_e_vs_eta->SetStats(0);
+    mcsce_e_vs_eta->Draw("COLZ");
+    
+    TLegend *mcsceeta= new TLegend(0.8, 0.8, 0.9, 0.9);
+    mcsceeta->AddEntry(mcsce_e_vs_eta,"SC e - MC", "");
+    mcsceeta->Draw();
+    
+    E_vs_eta->cd(3);
+    rcjpsie_e_vs_eta->GetXaxis()->SetTitle("#eta");
+    rcjpsie_e_vs_eta->GetYaxis()->SetTitle("E[GeV]");
+    //rcjpsie_e_vs_eta->GetXaxis()->SetRangeUser(-8,8);
+    //rcjpsie_e_vs_eta->GetYaxis()->SetRangeUser(0,6);
+    rcjpsie_e_vs_eta->SetStats(0);
+    rcjpsie_e_vs_eta->Draw("COLZ");
+    
+    TLegend *rceeta= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rceeta->AddEntry(rcjpsie_e_vs_eta,"e at jpsi - Recon.", "");
+    rceeta->Draw();
+    
+    E_vs_eta->cd(4);
+    rcsce_e_vs_eta->GetXaxis()->SetTitle("#eta");
+    rcsce_e_vs_eta->GetYaxis()->SetTitle("E[GeV]");
+    //rcsce_e_vs_eta->GetXaxis()->SetRangeUser(-8,8);
+    //rcsce_e_vs_eta->GetYaxis()->SetRangeUser(0,6);
+    rcsce_e_vs_eta->SetStats(0);
+    rcsce_e_vs_eta->Draw("COLZ");
+    
+    TLegend *rcsceeta= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcsceeta->AddEntry(rcsce_e_vs_eta,"SC e - Recon.", "");
+    rcsceeta->Draw();
+    
+    TCanvas *E_vs_pz = new TCanvas("E_vs_pz","E_vs_pz",1600,1600);
+    E_vs_pz->Divide(3,2);
+    E_vs_pz->cd(1);
+    mcjpsipos_e_vs_pz->GetXaxis()->SetTitle("p_{z}");
+    mcjpsipos_e_vs_pz->GetYaxis()->SetTitle("E[GeV]");
+    mcjpsipos_e_vs_pz->GetXaxis()->SetRangeUser(-30,20);
+    mcjpsipos_e_vs_pz->GetYaxis()->SetRangeUser(-20,30);
+    mcjpsipos_e_vs_pz->SetStats(0);
+    mcjpsipos_e_vs_pz->Draw("COLZ");
+    
+    TLegend *mcpospz= new TLegend(0.8, 0.8, 0.9, 0.9);
+    mcpospz->AddEntry(mcjpsipos_e_vs_pz,"e^{+} at jpsi - MC", "");
+    mcpospz->Draw();
+    
+    E_vs_pz->cd(2);
+    mcjpsie_e_vs_pz->GetXaxis()->SetTitle("p_{z}");
+    mcjpsie_e_vs_pz->GetYaxis()->SetTitle("E[GeV]");
+    mcjpsie_e_vs_pz->GetXaxis()->SetRangeUser(-30,20);
+    mcjpsie_e_vs_pz->GetYaxis()->SetRangeUser(-20,30);
+    mcjpsie_e_vs_pz->SetStats(0);
+    mcjpsie_e_vs_pz->Draw("COLZ");
+    
+    TLegend *mcepz= new TLegend(0.8, 0.8, 0.9, 0.9);
+    mcepz->AddEntry(mcjpsie_e_vs_pz,"e at jpsi - MC", "");
+    mcepz->Draw();
+    
+    E_vs_pz->cd(3);
+    mcsce_e_vs_pz->GetXaxis()->SetTitle("p_{z}");
+    mcsce_e_vs_pz->GetYaxis()->SetTitle("E[GeV]");
+    mcsce_e_vs_pz->GetXaxis()->SetRangeUser(-30,20);
+    mcsce_e_vs_pz->GetYaxis()->SetRangeUser(-20,30);
+    mcsce_e_vs_pz->SetStats(0);
+    mcsce_e_vs_pz->Draw("COLZ");
+    
+    TLegend *mcscepz= new TLegend(0.8, 0.8, 0.9, 0.9);
+    mcscepz->AddEntry(mcsce_e_vs_pz,"SC e - MC", "");
+    mcscepz->Draw();
+    
+    E_vs_pz->cd(4);
+    rcjpsipos_e_vs_pz->GetXaxis()->SetTitle("p_{z}");
+    rcjpsipos_e_vs_pz->GetYaxis()->SetTitle("E[GeV]");
+    rcjpsipos_e_vs_pz->GetXaxis()->SetRangeUser(-30,20);
+    rcjpsipos_e_vs_pz->GetYaxis()->SetRangeUser(-20,30);
+    rcjpsipos_e_vs_pz->SetStats(0);
+    rcjpsipos_e_vs_pz->Draw("COLZ");
+    
+    TLegend *rcpospz= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcpospz->AddEntry(rcjpsie_e_vs_pz,"e^{+} at jpsi - Recon.", "");
+    rcpospz->Draw();
+    
+    E_vs_pz->cd(5);
+    rcjpsie_e_vs_pz->GetXaxis()->SetTitle("p_{z}");
+    rcjpsie_e_vs_pz->GetYaxis()->SetTitle("E[GeV]");
+    rcjpsie_e_vs_pz->GetXaxis()->SetRangeUser(-30,20);
+    rcjpsie_e_vs_pz->GetYaxis()->SetRangeUser(-20,30);
+    rcjpsie_e_vs_pz->SetStats(0);
+    rcjpsie_e_vs_pz->Draw("COLZ");
+    
+    TLegend *rcepz= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcepz->AddEntry(rcjpsie_e_vs_pz,"e at jpsi - Recon.", "");
+    rcepz->Draw();
+    
+    E_vs_pz->cd(6);
+    rcsce_e_vs_pz->GetXaxis()->SetTitle("p_{z}");
+    rcsce_e_vs_pz->GetYaxis()->SetTitle("E[GeV]");
+    rcsce_e_vs_pz->GetXaxis()->SetRangeUser(-30,20);
+    rcsce_e_vs_pz->GetYaxis()->SetRangeUser(-20,30);
+    rcsce_e_vs_pz->SetStats(0);
+    rcsce_e_vs_pz->Draw("COLZ");
+    
+    TLegend *rcscepz= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcscepz->AddEntry(rcsce_e_vs_pz,"SC e - Recon.", "");
+    rcscepz->Draw();
+    
+    TCanvas *E_minus_pz = new TCanvas("E_minus_pz","E_minus_pz",800,600);
+    E_minus_pz->Divide(2,1);
+    
+    E_minus_pz->cd(1);
+    mcjpsie_e_minus_pz->GetXaxis()->SetTitle("E - P_{z}");
+    mcjpsie_e_minus_pz->GetXaxis()->SetRangeUser(20,40);
+    mcjpsie_e_minus_pz->SetStats(0);
+    mcjpsie_e_minus_pz->GetYaxis()->SetTitleSize(0.03);
+    //mcjpsie_e_minus_pz->GetYaxis()->SetTitle("Final Proton");
+    mcjpsie_e_minus_pz->SetLineColor(1);//
+    mcjpsie_e_minus_pz->SetLineWidth(6);
+    mcjpsie_e_minus_pz->Draw();
+    
+    /*mcjpsipos_e_minus_pz->SetLineColor(7);//
+    mcjpsipos_e_minus_pz->SetLineWidth(6);
+    mcjpsipos_e_minus_pz->Draw("SAME");
+    
+    mcsce_e_minus_pz->SetLineColor(2);//
+    mcsce_e_minus_pz->SetLineWidth(6);
+    mcsce_e_minus_pz->Draw("SAME");
+    
+    rcjpsie_e_minus_pz->SetLineColor(3);//
+    rcjpsie_e_minus_pz->SetLineWidth(6);
+    rcjpsie_e_minus_pz->Draw("SAME");
+    
+    rcjpsipos_e_minus_pz->SetLineColor(6);//
+    rcjpsipos_e_minus_pz->SetLineWidth(6);
+    rcjpsipos_e_minus_pz->Draw("SAME");
+    
+    rcsce_e_minus_pz->SetLineColor(4);//
+    rcsce_e_minus_pz->SetLineWidth(6);
+    rcsce_e_minus_pz->Draw("SAME"); 
+    
+    djpsicheck_e_minus_pz->SetLineColor(5);//
+    djpsicheck_e_minus_pz->SetLineWidth(6);
+    djpsicheck_e_minus_pz->Draw("SAME");*/
+    
+    TLegend *mceminuspz = new TLegend(0.8, 0.8, 0.9, 0.9);
+    mceminuspz->AddEntry(mcjpsie_e_minus_pz,"MC JPsi e", "l");
+    //mceminuspz->AddEntry(mcjpsipos_e_minus_pz,"MC JPsi e^{+}", "l");
+    //mceminuspz->AddEntry(mcsce_e_minus_pz, "MC SC e", "l");
+    //mceminuspz->AddEntry(rcjpsie_e_minus_pz, "RC JPsi e", "l");
+    //mceminuspz->AddEntry(rcjpsipos_e_minus_pz, "RC JPsi e^{+}", "l");
+    //mceminuspz->AddEntry(rcsce_e_minus_pz, "RC SC e", "l");
+    //mceminuspz->AddEntry(djpsicheck_e_minus_pz, "jpsi", "l");
+    mceminuspz->Draw();
+    
+    E_minus_pz->cd(2);
+    rcjpsie_e_minus_pz->GetXaxis()->SetTitle("E - P_{z}");
+    rcjpsie_e_minus_pz->GetXaxis()->SetRangeUser(20,40);
+    rcjpsie_e_minus_pz->SetStats(0);
+    rcjpsie_e_minus_pz->GetYaxis()->SetTitleSize(0.03);
+    //rcjpsie_e_minus_pz->GetYaxis()->SetTitle("Final Proton");
+    rcjpsie_e_minus_pz->SetLineColor(1);//
+    rcjpsie_e_minus_pz->SetLineWidth(6);
+    rcjpsie_e_minus_pz->Draw();
+    
+    TLegend *rceminuspz = new TLegend(0.8, 0.8, 0.9, 0.9);
+    rceminuspz->AddEntry(rcjpsie_e_minus_pz, "RC JPsi e", "l");
+    rceminuspz->Draw();
+    
+    TCanvas *Theta_vs_Phi = new TCanvas("#Theta_vs_#Phi","#Theta_vs_#Phi",1600,1600);
+    Theta_vs_Phi->Divide(3,2);
+    Theta_vs_Phi->cd(1);
+    mcjpsipos_theta_vs_phi->GetXaxis()->SetTitle("#phi");
+    mcjpsipos_theta_vs_phi->GetYaxis()->SetTitle("#theta");
+    mcjpsipos_theta_vs_phi->GetXaxis()->SetRangeUser(-2,6);
+    mcjpsipos_theta_vs_phi->GetYaxis()->SetRangeUser(-10,10);
+    mcjpsipos_theta_vs_phi->SetStats(0);
+    mcjpsipos_theta_vs_phi->Draw("COLZ");
+    
+    TLegend *mcposthetaphi= new TLegend(0.8, 0.8, 0.9, 0.9);
+    mcposthetaphi->AddEntry(mcjpsipos_theta_vs_phi,"e^{+} at jpsi - MC", "");
+    mcposthetaphi->Draw();
+    
+    Theta_vs_Phi->cd(2);
+    mcjpsie_theta_vs_phi->GetXaxis()->SetTitle("#phi");
+    mcjpsie_theta_vs_phi->GetYaxis()->SetTitle("#theta");
+    mcjpsie_theta_vs_phi->GetXaxis()->SetRangeUser(-2,6);
+    mcjpsie_theta_vs_phi->GetYaxis()->SetRangeUser(-10,10);
+    mcjpsie_theta_vs_phi->SetStats(0);
+    mcjpsie_theta_vs_phi->Draw("COLZ");
+    
+    TLegend *mcethetaphi= new TLegend(0.8, 0.8, 0.9, 0.9);
+    mcethetaphi->AddEntry(mcjpsie_theta_vs_phi,"e at jpsi - MC", "");
+    mcethetaphi->Draw();
+    
+    Theta_vs_Phi->cd(3);
+    mcsce_theta_vs_phi->GetXaxis()->SetTitle("#phi");
+    mcsce_theta_vs_phi->GetYaxis()->SetTitle("#theta");
+    mcsce_theta_vs_phi->GetXaxis()->SetRangeUser(-2,6);
+    mcsce_theta_vs_phi->GetYaxis()->SetRangeUser(-10,10);
+    mcsce_theta_vs_phi->SetStats(0);
+    mcsce_theta_vs_phi->Draw("COLZ");
+    
+    TLegend *mcscethetaphi= new TLegend(0.8, 0.8, 0.9, 0.9);
+    mcscethetaphi->AddEntry(mcsce_theta_vs_phi,"SC e - MC", "");
+    mcscethetaphi->Draw();
+    
+    Theta_vs_Phi->cd(4);
+    rcjpsipos_theta_vs_phi->GetXaxis()->SetTitle("#phi");
+    rcjpsipos_theta_vs_phi->GetYaxis()->SetTitle("#theta");
+    rcjpsipos_theta_vs_phi->GetXaxis()->SetRangeUser(-2,6);
+    rcjpsipos_theta_vs_phi->GetYaxis()->SetRangeUser(-10,10);
+    rcjpsipos_theta_vs_phi->SetStats(0);
+    rcjpsipos_theta_vs_phi->Draw("COLZ");
+    
+    TLegend *rcposthetaphi= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcposthetaphi->AddEntry(rcjpsipos_theta_vs_phi,"e^{+} at jpsi - RC", "");
+    rcposthetaphi->Draw();
+    
+    Theta_vs_Phi->cd(5);
+    rcjpsie_theta_vs_phi->GetXaxis()->SetTitle("#phi");
+    rcjpsie_theta_vs_phi->GetYaxis()->SetTitle("#theta");
+    rcjpsie_theta_vs_phi->GetXaxis()->SetRangeUser(-2,6);
+    rcjpsie_theta_vs_phi->GetYaxis()->SetRangeUser(-10,10);
+    rcjpsie_theta_vs_phi->SetStats(0);
+    rcjpsie_theta_vs_phi->Draw("COLZ");
+    
+    TLegend *rcethetaphi= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcethetaphi->AddEntry(rcjpsie_theta_vs_phi,"e at jpsi - RC", "");
+    rcethetaphi->Draw();
+    
+    Theta_vs_Phi->cd(6);
+    rcsce_theta_vs_phi->GetXaxis()->SetTitle("#phi");
+    rcsce_theta_vs_phi->GetYaxis()->SetTitle("#theta");
+    rcsce_theta_vs_phi->GetXaxis()->SetRangeUser(-2,6);
+    rcsce_theta_vs_phi->GetYaxis()->SetRangeUser(-10,10);
+    rcsce_theta_vs_phi->SetStats(0);
+    rcsce_theta_vs_phi->Draw("COLZ");
+    
+    TLegend *rcscethetaphi= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcscethetaphi->AddEntry(rcsce_theta_vs_phi,"SC e - RC", "");
+    rcscethetaphi->Draw();
+    
+    TCanvas *Phi_vs_Eta = new TCanvas("#Phi_vs_#Eta","#Phi_vs_#Eta",1600,1600);
+    Phi_vs_Eta->Divide(3,2);
+    Phi_vs_Eta->cd(1);
+    mcjpsipos_phi_vs_eta->GetXaxis()->SetTitle("#eta");
+    mcjpsipos_phi_vs_eta->GetYaxis()->SetTitle("#phi");
+    mcjpsipos_phi_vs_eta->GetXaxis()->SetRangeUser(-6,6);
+    mcjpsipos_phi_vs_eta->GetYaxis()->SetRangeUser(-20,20);
+    mcjpsipos_phi_vs_eta->SetStats(0);
+    mcjpsipos_phi_vs_eta->Draw("COLZ");
+    
+    TLegend *mcposphieta= new TLegend(0.8, 0.8, 0.9, 0.9);
+    mcposphieta->AddEntry(mcjpsipos_phi_vs_eta,"e^{+} at jpsi - MC", "");
+    mcposphieta->Draw();
+    
+    Phi_vs_Eta->cd(2);
+    mcjpsie_phi_vs_eta->GetXaxis()->SetTitle("#eta");
+    mcjpsie_phi_vs_eta->GetYaxis()->SetTitle("#phi");
+    mcjpsie_phi_vs_eta->GetXaxis()->SetRangeUser(-6,6);
+    mcjpsie_phi_vs_eta->GetYaxis()->SetRangeUser(-20,20);
+    mcjpsie_phi_vs_eta->SetStats(0);
+    mcjpsie_phi_vs_eta->Draw("COLZ");
+    
+    TLegend *mcephieta= new TLegend(0.8, 0.8, 0.9, 0.9);
+    mcephieta->AddEntry(mcjpsie_phi_vs_eta,"e at jpsi - MC", "");
+    mcephieta->Draw();
+    
+    Phi_vs_Eta->cd(3);
+    mcsce_phi_vs_eta->GetXaxis()->SetTitle("#eta");
+    mcsce_phi_vs_eta->GetYaxis()->SetTitle("#phi");
+    mcsce_phi_vs_eta->GetXaxis()->SetRangeUser(-6,6);
+    mcsce_phi_vs_eta->GetYaxis()->SetRangeUser(-20,20);
+    mcsce_phi_vs_eta->SetStats(0);
+    mcsce_phi_vs_eta->Draw("COLZ");
+    
+    TLegend *mcscephieta= new TLegend(0.8, 0.8, 0.9, 0.9);
+    mcscephieta->AddEntry(mcsce_phi_vs_eta,"SC e - MC", "");
+    mcscephieta->Draw();
+    
+    Phi_vs_Eta->cd(4);
+    rcjpsipos_phi_vs_eta->GetXaxis()->SetTitle("#eta");
+    rcjpsipos_phi_vs_eta->GetYaxis()->SetTitle("#phi");
+    rcjpsipos_phi_vs_eta->GetXaxis()->SetRangeUser(-6,6);
+    rcjpsipos_phi_vs_eta->GetYaxis()->SetRangeUser(-20,20);
+    rcjpsipos_phi_vs_eta->SetStats(0);
+    rcjpsipos_phi_vs_eta->Draw("COLZ");
+    
+    TLegend *rcposphieta= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcposphieta->AddEntry(rcjpsipos_phi_vs_eta,"e^{+} at jpsi - RC", "");
+    rcposphieta->Draw();
+    
+    Phi_vs_Eta->cd(5);
+    rcjpsie_phi_vs_eta->GetXaxis()->SetTitle("#eta");
+    rcjpsie_phi_vs_eta->GetYaxis()->SetTitle("#phi");
+    rcjpsie_phi_vs_eta->GetXaxis()->SetRangeUser(-6,6);
+    rcjpsie_phi_vs_eta->GetYaxis()->SetRangeUser(-20,20);
+    rcjpsie_phi_vs_eta->SetStats(0);
+    rcjpsie_phi_vs_eta->Draw("COLZ");
+    
+    TLegend *rcephieta= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcephieta->AddEntry(rcjpsie_phi_vs_eta,"e at jpsi - RC", "");
+    rcephieta->Draw();
+    
+    Phi_vs_Eta->cd(6);
+    rcsce_phi_vs_eta->GetXaxis()->SetTitle("#eta");
+    rcsce_phi_vs_eta->GetYaxis()->SetTitle("#phi");
+    rcsce_phi_vs_eta->GetXaxis()->SetRangeUser(-6,6);
+    rcsce_phi_vs_eta->GetYaxis()->SetRangeUser(-20,20);
+    rcsce_phi_vs_eta->SetStats(0);
+    rcsce_phi_vs_eta->Draw("COLZ");
+    
+    TLegend *rcscephieta= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcscephieta->AddEntry(rcsce_phi_vs_eta,"SC e - RC", "");
+    rcscephieta->Draw();
+    
+    TCanvas *Phi_vs_E = new TCanvas("#Phi_vs_#E","#Phi_vs_#E",1600,1600);
+    Phi_vs_E->Divide(3,2);
+    Phi_vs_E->cd(1);
+    mcjpsipos_phi_vs_e->GetXaxis()->SetTitle("E[GeV]");
+    mcjpsipos_phi_vs_e->GetYaxis()->SetTitle("#phi");
+    mcjpsipos_phi_vs_e->GetXaxis()->SetRangeUser(-6,6);
+    //mcjpsipos_phi_vs_e->GetYaxis()->SetRangeUser(-10,40);
+    mcjpsipos_phi_vs_e->SetStats(0);
+    mcjpsipos_phi_vs_e->Draw("COLZ");
+    
+    TLegend *mcposphie= new TLegend(0.8, 0.8, 0.9, 0.9);
+    mcposphie->AddEntry(mcjpsipos_phi_vs_e,"e^{+} at jpsi - MC", "");
+    mcposphie->Draw();
+    
+    Phi_vs_E->cd(2);
+    mcjpsie_phi_vs_e->GetXaxis()->SetTitle("E[GeV]");
+    mcjpsie_phi_vs_e->GetYaxis()->SetTitle("#phi");
+    mcjpsie_phi_vs_e->GetXaxis()->SetRangeUser(-6,6);
+    //mcjpsie_phi_vs_e->GetYaxis()->SetRangeUser(-10,40);
+    mcjpsie_phi_vs_e->SetStats(0);
+    mcjpsie_phi_vs_e->Draw("COLZ");
+    
+    TLegend *mcephie= new TLegend(0.8, 0.8, 0.9, 0.9);
+    mcephie->AddEntry(mcjpsie_phi_vs_eta,"e at jpsi - MC", "");
+    mcephie->Draw();
+    
+    Phi_vs_E->cd(3);
+    mcsce_phi_vs_e->GetXaxis()->SetTitle("E[GeV]");
+    mcsce_phi_vs_e->GetYaxis()->SetTitle("#phi");
+    mcsce_phi_vs_e->GetXaxis()->SetRangeUser(-6,6);
+    //mcsce_phi_vs_e->GetYaxis()->SetRangeUser(-10,40);
+    mcsce_phi_vs_e->SetStats(0);
+    mcsce_phi_vs_e->Draw("COLZ");
+    
+    TLegend *mcscephie= new TLegend(0.8, 0.8, 0.9, 0.9);
+    mcscephie->AddEntry(mcsce_phi_vs_e,"SC e - MC", "");
+    mcscephie->Draw();
+    
+    Phi_vs_E->cd(4);
+    rcjpsipos_phi_vs_e->GetXaxis()->SetTitle("E[GeV]");
+    rcjpsipos_phi_vs_e->GetYaxis()->SetTitle("#phi");
+    rcjpsipos_phi_vs_e->GetXaxis()->SetRangeUser(-6,6);
+    //rcjpsipos_phi_vs_e->GetYaxis()->SetRangeUser(-10,40);
+    rcjpsipos_phi_vs_e->SetStats(0);
+    rcjpsipos_phi_vs_e->Draw("COLZ");
+    
+    TLegend *rcposphie= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcposphie->AddEntry(rcjpsipos_phi_vs_e,"e^{+} at jpsi - RC", "");
+    rcposphie->Draw();
+    
+    Phi_vs_E->cd(5);
+    rcjpsie_phi_vs_e->GetXaxis()->SetTitle("E[GeV]");
+    rcjpsie_phi_vs_e->GetYaxis()->SetTitle("#phi");
+    rcjpsie_phi_vs_e->GetXaxis()->SetRangeUser(-6,6);
+    //rcjpsie_phi_vs_e->GetYaxis()->SetRangeUser(-10,40);
+    rcjpsie_phi_vs_e->SetStats(0);
+    rcjpsie_phi_vs_e->Draw("COLZ");
+    
+    TLegend *rcephie= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcephie->AddEntry(rcjpsie_phi_vs_e,"e at jpsi - RC", "");
+    rcephie->Draw();
+    
+    Phi_vs_E->cd(6);
+    rcsce_phi_vs_e->GetXaxis()->SetTitle("E[GeV]");
+    rcsce_phi_vs_e->GetYaxis()->SetTitle("#phi");
+    rcsce_phi_vs_e->GetXaxis()->SetRangeUser(-6,6);
+    //rcsce_phi_vs_e->GetYaxis()->SetRangeUser(-10,40);
+    rcsce_phi_vs_e->SetStats(0);
+    rcsce_phi_vs_e->Draw("COLZ");
+    
+    TLegend *rcscephie= new TLegend(0.8, 0.8, 0.9, 0.9);
+    rcscephie->AddEntry(rcsce_phi_vs_e,"SC e - RC", "");
+    rcscephie->Draw();
+    
+    TCanvas *twoenergy = new TCanvas("twoenergy","twoenergy",800,800);
+    mcjpsitwoenergy->GetXaxis()->SetTitle("E[GeV]");
+    mcjpsitwoenergy->GetXaxis()->SetRangeUser(-5,40);
+    mcjpsitwoenergy->SetStats(0);
+    mcjpsitwoenergy->GetYaxis()->SetRangeUser(0,16000);
+    //mcjpsitwoenergy->GetYaxis()->SetTitleSize(0.03);
+    //mcjpsitwoenergy->GetYaxis()->SetTitle("Final Proton");
+    mcjpsitwoenergy->SetLineColor(1);//
+    mcjpsitwoenergy->SetLineWidth(6);
+    mcjpsitwoenergy->Draw();
+    
+    mcsctwoenergy->SetLineColor(2);//
+    mcsctwoenergy->SetLineWidth(6);
+    mcsctwoenergy->Draw("SAME");
+    
+    rcjpsitwoenergy->SetLineColor(3);//
+    rcjpsitwoenergy->SetLineWidth(6);
+    rcjpsitwoenergy->Draw("SAME");
+    
+    rcsctwoenergy->SetLineColor(4);//
+    rcsctwoenergy->SetLineWidth(6);
+    rcsctwoenergy->Draw("SAME");
+    
+    TLegend *mctwoenergy = new TLegend(0.8, 0.8, 0.9, 0.9);
+    mctwoenergy->AddEntry(mcjpsitwoenergy,"MC JPsi e", "l");
+    mctwoenergy->AddEntry(mcsctwoenergy,"MC SC e", "l");
+    mctwoenergy->AddEntry(rcjpsitwoenergy,"RC JPsi e", "l");
+    mctwoenergy->AddEntry(rcsctwoenergy,"RC SC e", "l");
+    mctwoenergy->Draw();
+    
     
         return;
         
