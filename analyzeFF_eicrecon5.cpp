@@ -554,13 +554,7 @@ void analyzeFF_eicrecon5(){
                     
                     //applying a cut 20<E-Pz<40 GeV
                     if (((vecjpsi + vec2 + vec3).E() - (vecjpsi + vec2 + vec3).Pz()) > 20 && ((vecjpsi + vec2 + vec3).E() - (vecjpsi + vec2 + vec3).Pz()) < 40){
-                        
-                        //mcjpsie_e_minus_pz->Fill((ijpsi + vecjpsi).E() - (ijpsi + vecjpsi).Pz());
                         mcjpsie_e_minus_pz->Fill((vecjpsi + vec2 + vec3).E() - (vecjpsi + vec2 + vec3).Pz());
-                        //mcjpsipos_e_minus_pz->Fill(vec2.E() - vec2.Pz());
-                        //mcsce_e_minus_pz->Fill(vec3.E() - vec3.Pz());
-                        
-                        //djpsicheck_e_minus_pz->Fill(ijpsi.E() - ijpsi.Pz());
                     }
                     
                     mcjpsie_theta_vs_phi->Fill(vecjpsi.Theta(), vecjpsi.Phi());
@@ -899,9 +893,6 @@ void analyzeFF_eicrecon5(){
                         if (((rcpv1 + rcpv2 + eq1).E() - (rcpv1 + rcpv2 + eq1).Pz()) > 20 && ((rcpv1 + rcpv2 + eq1).E() - (rcpv1 + rcpv2 + eq1).Pz()) < 40){
                             
                             rcjpsie_e_minus_pz->Fill((rcpv1 + rcpv2 + eq1).E() - (rcpv1 + rcpv2 + eq1).Pz());
-                            //rcjpsie_e_minus_pz->Fill(rcpv1.E() - rcpv1.Pz());
-                            //rcjpsipos_e_minus_pz->Fill(rcpv2.E() - rcpv2.Pz());
-                            //rcsce_e_minus_pz->Fill(eq1.E() - eq1.Pz());
                         }
                         
                         rcjpsie_theta_vs_phi->Fill(rcpv1.Theta(), rcpv1.Phi());
