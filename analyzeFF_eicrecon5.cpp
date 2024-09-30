@@ -108,6 +108,7 @@ void analyzeFF_eicrecon6(){
         TH1D *mtgg = new TH1D("mtgg","mtgg", 4000, 0, 100);
         TH1D *mta = new TH1D("mta","mta", 200, 0, 10);
         TH1D *mtq = new TH1D("mtq","mtq", 50, 0, 20);
+        TH1D *mtq_unrecon = new TH1D("mtq_unrecon","mtq_unrecon", 50, 0, 20);
         TH1D *mtqq = new TH1D("mtqq","mtqq", 50, 0, 20);
         TH1D *mtqq_2 = new TH1D("mtqq_2","mtqq_2", 50, 0, 20);
         
@@ -466,11 +467,11 @@ void analyzeFF_eicrecon6(){
                         
                 q2 = 4 * incbeame.E() * scatElecEnergMC * TMath::Sin(thetaMC/2.0) * TMath::Sin(thetaMC/2.0);
                 
-                if (q2 > 1 && q2 < 10 ){
+                //if (q2 > 1 && q2 < 10 ){
                     mtq->Fill(q2);
-                }
+                //}
                 
-                if (q2 > 0 && q2 < 20 ){
+                //if (q2 > 0 && q2 < 20 ){
                     //mtq->Fill(q2);
                     h2_eta_MC->Fill(mctrk4q2.Eta());
                     h2_e_MC->Fill(mctrk4q2.E());
@@ -516,7 +517,7 @@ void analyzeFF_eicrecon6(){
                     h8_pz_MC->Fill(vec3.Pz());
                     h8_e_MC->Fill(vec3.E());
                     
-                    //for the proton at position 4
+                    /*//for the proton at position 4
                     vec7.SetXYZM(mc_px_array[4], mc_py_array[4], mc_pz_array[4],mc_mass_array[4]);
                     vec7.RotateY(0.025);
                     h4_eta_MC->Fill(vec7.Eta());
@@ -524,7 +525,7 @@ void analyzeFF_eicrecon6(){
                     h4_py_MC->Fill(vec7.Py());
                     h4_pt_MC->Fill(vec7.Pt());
                     h4_pz_MC->Fill(vec7.Pz());
-                    h4_e_MC->Fill(vec7.E());
+                    h4_e_MC->Fill(vec7.E());*/
                     
                     //for the incoming proton
                     h3_eta_MC->Fill(iproton.Eta());
@@ -789,13 +790,17 @@ void analyzeFF_eicrecon6(){
                             }
                             
                             //if (abs(rcpv1rc.Pz()) > abs(eq1rc.Pz())){
-                            if (rcpv1rc.E() > eq1rc.E()){
+                            if (rcpv1rc.E() > eq1rc.E() && (abs(rcpv1rc.Pz()) > abs(eq1rc.Pz()))){
                                 eq1 = rcpv1rc;
                                 rcpv1 = eq1rc;
                             }
-                            if (eq1rc.E() > rcpv1rc.E()){
+                            else if (eq1rc.E() > rcpv1rc.E() && (abs(eq1rc.Pz()) > abs(rcpv1rc.Pz()))){
                                 eq1 = eq1rc;
                                 rcpv1 = rcpv1rc;
+                            }
+                            else {
+                                mtq_unrecon->Fill(q2);
+                                continue;
                             }
                             
                             
@@ -925,7 +930,7 @@ void analyzeFF_eicrecon6(){
                        }
                     //}
                     
-                }// Q2 if
+                //}// Q2 if
             }// event loop
                 
             
@@ -1425,8 +1430,8 @@ void analyzeFF_eicrecon6(){
     rcpzetasc->AddEntry(rcsce_pz_vs_eta,"SC e Recon.", "");
     rcpzetasc->Draw();
     
-    TCanvas *q_sq = new TCanvas("q_sq","q_sq",1400,700);
-    q_sq->Divide(2,1);
+    TCanvas *q_sq = new TCanvas("q_sq","q_sq",1800,600);
+    q_sq->Divide(3,1);
     q_sq->SetLogy();
     q_sq->cd(1);
     mtqq->GetXaxis()->SetTitle("Q^{2}");
@@ -1493,6 +1498,19 @@ void analyzeFF_eicrecon6(){
     qq22->AddEntry(mtq,"MC", "p");
     qq22->AddEntry(mtqq_2, "Full Reconstruction EcalEndcap", "l");
     qq22->Draw();
+    
+    q_sq->cd(3);
+    mtq_unrecon->GetXaxis()->SetTitle("Q^{2}");
+    //mtq_unrecon->GetYaxis()->SetRangeUser(10,4000);
+    //mtq_unrecon->SetStats(0);
+    mtq_unrecon->SetMarkerStyle(8);
+    mtq_unrecon->SetMarkerColor(2);
+    //mtq_unrecon->SetMarkerSize(1);
+    mtq_unrecon->GetYaxis()->SetTitleSize(0.03);
+    mtq_unrecon->SetLineColor(2);//black plot
+    //mtq_unrecon->SetFillColor(kGreen-9);
+    mtq_unrecon->SetLineWidth(6);
+    mtq_unrecon->Draw();
     
     TCanvas *sc = new TCanvas("sc","sc",1200,600);
     sc->Divide(2,1);
@@ -2084,3 +2102,4 @@ void analyzeFF_eicrecon6(){
 
 
 }
+
