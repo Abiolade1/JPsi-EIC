@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void analyzeFF_eicrecon5(){
+void analyzeFF_eicrecon6(){
     
         TString fileList = "q2_1-10.list";
         //TString fileList = "newlist.list";
@@ -13,7 +13,7 @@ void analyzeFF_eicrecon5(){
         
         TString outputName = "ab_test_00mrad_hepmc_";
         
-        TString date = "7_8_2024_";
+        TString date = "9_26_2024_";
         
         TString run  = "run_0";
         
@@ -39,6 +39,9 @@ void analyzeFF_eicrecon5(){
     
     TLorentzVector vecjpsi;//(10.0, 20.0, 30.0, 40.0);
     
+    TLorentzVector vecjpsimc;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector vec3mc;//(10.0, 20.0, 30.0, 40.0);
+    
     TLorentzVector JPsi1;//(10.0, 20.0, 30.0, 40.0);
     TLorentzVector JPsi2;//(10.0, 20.0, 30.0, 40.0);
     TLorentzVector JPsi22;//(10.0, 20.0, 30.0, 40.0);
@@ -58,6 +61,9 @@ void analyzeFF_eicrecon5(){
     TLorentzVector scatProton;//(10.0, 20.0, 30.0, 40.0);
     TLorentzVector scatElectron;//(10.0, 20.0, 30.0, 40.0);
     
+    TLorentzVector eq1rc;//(10.0, 20.0, 30.0, 40.0);
+    TLorentzVector rcpv1rc;//(10.0, 20.0, 30.0, 40.0);
+    
     TLorentzVector eq1;//(10.0, 20.0, 30.0, 40.0);
     TLorentzVector eq2;//(10.0, 20.0, 30.0, 40.0);
     TLorentzVector eq3;//(10.0, 20.0, 30.0, 40.0);
@@ -68,7 +74,6 @@ void analyzeFF_eicrecon5(){
     TLorentzVector iproton;//(10.0, 20.0, 30.0, 40.0);
     TLorentzVector jproton;//(10.0, 20.0, 30.0, 40.0);
     TLorentzVector ijpsi;//(10.0, 20.0, 30.0, 40.0);
-    TLorentzVector jjpsi;//(10.0, 20.0, 30.0, 40.0);
     
     TLorentzVector mctrue;//(10.0, 20.0, 30.0, 40.0);
     TLorentzVector afburn;//(10.0, 20.0, 30.0, 40.0);
@@ -87,10 +92,12 @@ void analyzeFF_eicrecon5(){
         TH1D *rcElectron= new TH1D("rcElectron","rcElectron", 100, -10, 10);
         TH1D *rcPositron= new TH1D("rcPositron","rcPositron", 100, -10, 10);
         
-        TH1D *diffjpsimass = new TH1D("diffjpsimass","diffjpsimass", 500, -2, 2);
-        TH1D *diffx_v = new TH1D("diffx_v","diffx_v", 500, -0.02, 0.02);
-        TH1D *difft = new TH1D("difft","difft", 500, -1, 1);
-        TH1D *diffq2 = new TH1D("diffq2","diffq2", 500, -10, 10);
+        TH1D *diffjpsimass = new TH1D("diffjpsimass","diffjpsimass", 500, -5, 5);
+        TH1D *diffx_v = new TH1D("diffx_v","diffx_v", 500, -5, 5);
+        TH1D *diffx_v2 = new TH1D("diffx_v2","diffx_v2", 500, -5, 5);
+        TH1D *difft = new TH1D("difft","difft", 500, -5, 5);
+        TH1D *diffq2 = new TH1D("diffq2","diffq2", 500, -5, 5);
+        TH1D *diffq2_2 = new TH1D("diffq2_2","diffq2_2", 500, -5, 5);
     
         TH1D *JPsiMass1 = new TH1D("JPsiMass1","J/#psi-Mass", 500, -10, 30);
         TH1D *rcJPsiMass1 = new TH1D("rcJPsiMass1","rcJ/#psi-Mass", 500, -10, 30);
@@ -100,17 +107,20 @@ void analyzeFF_eicrecon5(){
         TH1D *mtg = new TH1D("mtg","mtg", 4000, 0, 100);
         TH1D *mtgg = new TH1D("mtgg","mtgg", 4000, 0, 100);
         TH1D *mta = new TH1D("mta","mta", 200, 0, 10);
-        TH1D *mtq = new TH1D("mtq","mtq", 50, 1, 10);
-        TH1D *mtqq = new TH1D("mtqq","mtqq", 50, 1, 10);
+        TH1D *mtq = new TH1D("mtq","mtq", 50, 0, 20);
+        TH1D *mtqq = new TH1D("mtqq","mtqq", 50, 0, 20);
+        TH1D *mtqq_2 = new TH1D("mtqq_2","mtqq_2", 50, 0, 20);
         
         TH1D *ElectfJpsi = new TH1D("ElectfJpsi","ElectfJpsi", 200, -10, 10);
         TH1D *PositfJpsi = new TH1D("PositfJpsi","PositfJpsi", 200, -10, 10);
     
         TH1D *x_bjk = new TH1D("x_bjk","x_bjk", 2000, -100, 100);
-        TH1D *xb = new TH1D("xb","xb", 500, 0, 1);
-        TH1D *xb1 = new TH1D("xb1","xb1", 500, 0, 1);
-        TH1D *xv = new TH1D("xv","xv", 500, 0, 1);
-        TH1D *xv1 = new TH1D("xv1","xv1", 500, 0, 1);
+        TH1D *xb = new TH1D("xb","xb", 100, 0.01, 1);
+        TH1D *xb1 = new TH1D("xb1","xb1", 100, 0.01, 1);
+        TH1D *xb2 = new TH1D("xb2","xb2", 100, 0.01, 1);
+        TH1D *xv = new TH1D("xv","xv", 100, 0.01, 1);
+        TH1D *xv1 = new TH1D("xv1","xv1", 100, 0.01, 1);
+        TH1D *xv2 = new TH1D("xv2","xv2", 100, 0.01, 1);
     
         TH1D* rcElectronpt = new TH1D("rcElectronpt", ";p_{t} [GeV/c]", 100, -10, 10.0);
         TH1D* rcPositronpt = new TH1D("rcPositronpt", ";p_{t} [GeV/c]", 100, -10, 10.0);
@@ -118,18 +128,9 @@ void analyzeFF_eicrecon5(){
         TH1D* rcElectronjpsieta = new TH1D("rcElectronjpsieta",";Pseudorapidity, #eta",100,-10,10.0);
         TH1D* rcPositroneta = new TH1D("rcPositroneta",";Pseudorapidity, #eta",100,-10,10.0);
     
-        TH1D* mcjpsie_e_minus_pz = new TH1D("mcjpsie_e_minus_pz","mcjpsie_e_minus_pz",100, -50, 150.0);
-        TH1D* mcjpsipos_e_minus_pz = new TH1D("mcjpsipos_e_minus_pz","mcjpsipos_e_minus_pz",100, -50, 150.0);
-        TH1D* rcjpsie_e_minus_pz = new TH1D("rcjpsie_e_minus_pz","rcjpsie_e_minus_pz",100, -50, 150.0);
-        TH1D* rcjpsipos_e_minus_pz = new TH1D("rcjpsipos_e_minus_pz","rcjpsipos_e_minus_pz",100, -50, 150.0);
-        TH1D* mcsce_e_minus_pz = new TH1D("mcsce_e_minus_pz","mcsce_e_minus_pz",100, -50, 150.0);
-        TH1D* rcsce_e_minus_pz = new TH1D("rcsce_e_minus_pz","rcsce_e_minus_pz",100, -50, 150.0);
-        TH1D* djpsicheck_e_minus_pz = new TH1D("djpsicheck_e_minus_pz","djpsicheck_e_minus_pz",100, -50, 150.0);
-    
-        TH1D* mcjpsitwoenergy = new TH1D("mcjpsitwoenergy","mcjpsitwoenergy",100, -50, 150.0);
-        TH1D* mcsctwoenergy = new TH1D("mcsctwoenergy","mcsctwoenergy",100, -50, 150.0);
-        TH1D* rcjpsitwoenergy = new TH1D("rcjpsitwoenergy","rcjpsitwoenergy",100, -50, 150.0);
-        TH1D* rcsctwoenergy = new TH1D("rcsctwoenergy","rcsctwoenergy",100, -50, 150.0);
+        TH1D* mcjpsie_e_minus_pz = new TH1D("mcjpsie_e_minus_pz","mcjpsie_e_minus_pz",500, -50, 150.0);
+        TH1D* mcjpsie_e_minus_pzmc = new TH1D("mcjpsie_e_minus_pzmc","mcjpsie_e_minus_pzmc",500, -50, 150.0);
+        TH1D* rcjpsie_e_minus_pz = new TH1D("rcjpsie_e_minus_pz","rcjpsie_e_minus_pz",500, -50, 150.0);
     
         TH2D* mcjpsie_pt_vs_eta = new TH2D("mcjpsie_pt_vs_eta","mcjpsie_pt_vs_eta",100,-10,10.0,100,0,20.0);
         TH2D* rcjpsie_pt_vs_eta = new TH2D("rcjpsie_pt_vs_eta","rcjpsie_pt_vs_eta",100,-10,10.0,100,0,20.0);
@@ -140,6 +141,7 @@ void analyzeFF_eicrecon5(){
         TH2D* rcjpsie_e_vs_eta = new TH2D("rcjpsie_e_vs_eta","rcjpsie_e_vs_eta",100,-10,10.0,100,-5,100.0);
         TH2D* mcsce_e_vs_eta = new TH2D("mcsce_e_vs_eta","mcsce_e_vs_eta",100,-10,10.0,100, -5, 100);
         TH2D* rcsce_e_vs_eta = new TH2D("rcsce_e_vs_eta","rcsce_e_vs_eta",100,-10,10.0,100, -5, 100);
+        TH2D* rcsce_e_vs_eta2 = new TH2D("rcsce_e_vs_eta2","rcsce_e_vs_eta2",100,-10,10.0,100, -5, 100);
         
         TH2D* mcsce_pt_vs_eta = new TH2D("mcsce_pt_vs_eta","mcsce_pt_vs_eta",100,-10,10.0,100,0,20.0);
         TH2D* rcsce_pt_vs_eta = new TH2D("rcsce_pt_vs_eta","rcsce_pt_vs_eta",100,-10,10.0,100,0,20.0);
@@ -152,6 +154,9 @@ void analyzeFF_eicrecon5(){
         TH2D* rcjpsipos_e_vs_pz = new TH2D("rcjpsipos_e_vs_pz","rcjpsipos_e_vs_pz",100, -50, 150.0,100,-20, 150);
         TH2D* mcsce_e_vs_pz = new TH2D("mcsce_e_vs_pz","mcsce_e_vs_pz",100, -50, 150.0,100, -20, 150);
         TH2D* rcsce_e_vs_pz = new TH2D("rcsce_e_vs_pz","rcsce_e_vs_pz",100, -50, 150.0,100, -20, 150);
+        TH2D* rcsce_e_vs_pz2 = new TH2D("rcsce_e_vs_pz2","rcsce_e_vs_pz2",100, -50, 150.0,100, -20, 150);
+    
+        TH1D* mcrapid = new TH1D("mcrapid",";rapidity, #y",100,-0.01,1.05);
     
         TH2D* mcjpsie_theta_vs_phi = new TH2D("mcjpsie_theta_vs_phi","mcjpsie_theta_vs_phi",200,-50, 150.0,200,-20, 150);
         TH2D* mcjpsipos_theta_vs_phi = new TH2D("mcjpsipos_theta_vs_phi","mcjpsipos_theta_vs_phi",200,-50, 150.0,200,-20, 150);
@@ -159,6 +164,7 @@ void analyzeFF_eicrecon5(){
         TH2D* rcjpsie_theta_vs_phi = new TH2D("rcjpsie_theta_vs_phi","rcjpsie_theta_vs_phi",200,-50, 150.0,200,-20, 150);
         TH2D* rcjpsipos_theta_vs_phi = new TH2D("rcjpsipos_theta_vs_phi","rcjpsipos_theta_vs_phi",200,-50, 150.0,200,-20, 150);
         TH2D* rcsce_theta_vs_phi = new TH2D("rcsce_theta_vs_phi","rcsce_theta_vs_phi",200,-50, 150.0,200,-20, 150);
+        TH2D* rcsce_theta_vs_phi2 = new TH2D("rcsce_theta_vs_phi2","rcsce_theta_vs_phi2",200,-50, 150.0,200,-20, 150);
     
         TH2D* mcjpsie_phi_vs_eta = new TH2D("mcjpsie_phi_vs_eta","mcjpsie_phi_vs_eta",200,-50, 150.0,200,-20, 150);
         TH2D* mcjpsipos_phi_vs_eta = new TH2D("mcjpsipos_phi_vs_eta","mcjpsipos_phi_vs_eta",200,-50, 150.0,200,-20, 150);
@@ -166,6 +172,7 @@ void analyzeFF_eicrecon5(){
         TH2D* rcjpsie_phi_vs_eta = new TH2D("rcjpsie_phi_vs_eta","rcjpsie_phi_vs_eta",200,-50, 150.0,200,-20, 150);
         TH2D* rcjpsipos_phi_vs_eta = new TH2D("rcjpsipos_phi_vs_eta","rcjpsipos_phi_vs_eta",200,-50, 150.0,200,-20, 150);
         TH2D* rcsce_phi_vs_eta = new TH2D("rcsce_phi_vs_eta","rcsce_phi_vs_eta",200,-50, 150.0,200,-20, 150);
+        TH2D* rcsce_phi_vs_eta2 = new TH2D("rcsce_phi_vs_eta2","rcsce_phi_vs_eta2",200,-50, 150.0,200,-20, 150);
         
         TH2D* mcjpsie_phi_vs_e = new TH2D("mcjpsie_phi_vs_e","mcjpsie_phi_vs_e",200,-50, 150.0,200,-20, 150);
         TH2D* mcjpsipos_phi_vs_e = new TH2D("mcjpsipos_phi_vs_e","mcjpsipos_phi_vs_e",200,-50, 150.0,200,-20, 150);
@@ -173,6 +180,7 @@ void analyzeFF_eicrecon5(){
         TH2D* rcjpsie_phi_vs_e = new TH2D("rcjpsie_phi_vs_e","rcjpsie_phi_vs_e",200,-50, 150.0,200,-20, 150);
         TH2D* rcjpsipos_phi_vs_e = new TH2D("rcjpsipos_phi_vs_e","rcjpsipos_phi_vs_e",200,-50, 150.0,200,-20, 150);
         TH2D* rcsce_phi_vs_e = new TH2D("rcsce_phi_vs_e","rcsce_phi_vs_e",200,-50, 150.0,200,-20, 150);
+        TH2D* rcsce_phi_vs_e2 = new TH2D("rcsce_phi_vs_e2","rcsce_phi_vs_e2",200,-50, 150.0,200,-20, 150);
     
         //--------------------------------------------------------------------------
         
@@ -247,7 +255,10 @@ void analyzeFF_eicrecon5(){
         TH1D* h2_px_MC = new TH1D("px2_MC", ";p_{x} [GeV/c]", 100, -10.0, 10.0);
         TH1D* h2_py_MC = new TH1D("py2_MC", ";p_{y} [GeV/c]", 100, -10.0, 10.0);
         TH1D* h2_pt_MC = new TH1D("pt2_MC", ";p_{t} [GeV/c]", 100, 0.0, 10.0);
-        TH1D* h2_e_MC = new TH1D("e2_MC", ";E [GeV]", 1000, 0, 320.0);
+        TH1D* h2_e_MC = new TH1D("e2_MC", ";E [GeV]", 200, -20, 20.0);
+    
+        TH1D* scat_e_RC = new TH1D("scat_e_RC", ";E [GeV]", 200, -20, 20.0);
+        TH1D* scat_e_EcalEnd = new TH1D("scat_e_EcalEnd", ";E [GeV]", 200, -20, 20.0);
         
         //Roman pots
         TH1D* h_px_RomanPots = new TH1D("px_RomanPots", ";p_{x} [GeV/c]", 100, -10.0, 10.0);
@@ -288,30 +299,36 @@ void analyzeFF_eicrecon5(){
         TH2D* h_ZDC_emcal_occupancy_map = new TH2D("ZDC_emcal_occupancy_map", "ZDC_emcal_occupancy_map", 100, -1150, -1050, 100, -60, 60);
         TH1D* h_ZDC_emcal_cluster_energy = new TH1D("ZDC_emcal_cluster_energy", ";Cluster Energy [GeV]", 100, 0.0, 100.0);
     
-        incbeame.SetXYZM(0,0,-17.999999992746666,.00051099904266560590);
+        incbeame.SetXYZM(0,0,-17.999999992746666,0.00051099904266560590);
         incbeam.SetXYZM(0,0, 274.99839935073504,0.93827210000933003);
     
         
         int fileCounter = 0;
         int iEvent = 0;
-        int iflagproton;
+        int lk = 0;
+        int lk1 = 0;
+        int iflagproton = 0;
         int flag1 = 0;
-        int flag2 = 0;
-        int flag3 = 0;
         int ic = 2;//for the MC scattered electron
         
         double t1;
         double t3;
         double thetaMC;
         double thetaChPct;
+        double thetaChPct2;
         double q2;
         double q2_1;
+        double q2_2;
         double scatElecEnergMC;
         double scatElecEnergChPct;
+        double scatElecEnergChPct2;
         double ixb;
         double ixv;
         double ixb1;
+        double ixb2;
         double ixv1;
+        double ixv2;
+        double rap;
     
         while(getline(fileListStream, fileName)){
             
@@ -393,6 +410,16 @@ void analyzeFF_eicrecon5(){
             TTreeReaderArray<float> recop_p_m = {tree_reader, "ReconstructedParticles.mass"};
             TTreeReaderArray<int> recop_p_pdg = {tree_reader, "ReconstructedParticles.PDG"};
             
+            //Reconstructed EcalEndcapNClusters
+            TTreeReaderArray<float> em_energy_array = {tree_reader, "EcalEndcapNClusters.energy"};
+            TTreeReaderArray<float> em_x_array = {tree_reader, "EcalEndcapNClusters.position.x"};
+            TTreeReaderArray<float> em_y_array = {tree_reader, "EcalEndcapNClusters.position.y"};
+            TTreeReaderArray<float> emhits_x_array = {tree_reader, "EcalEndcapNRecHits.position.x"};
+            TTreeReaderArray<float> emhits_y_array = {tree_reader, "EcalEndcapNRecHits.position.y"};
+            TTreeReaderArray<float> emhits_energy_array = {tree_reader, "EcalEndcapNRecHits.energy"};
+            TTreeReaderArray<float> theta_array = {tree_reader, "EcalEndcapNClusters.intrinsicTheta"};
+            TTreeReaderArray<float> phi_array = {tree_reader, "EcalEndcapNClusters.intrinsicPhi"};
+            
             /*TTreeReaderArray<int> recop_pdg = {tree_reader, "ReconstructedChargedParticles.PDG"};
             TTreeReaderArray<float> recop_px = {tree_reader, "ReconstructedChargedParticles.momentum.x"};
             TTreeReaderArray<float> recop_py = {tree_reader, "ReconstructedChargedParticles.momentum.y"};
@@ -430,11 +457,8 @@ void analyzeFF_eicrecon5(){
                 double maxPt=-99.;
                 iflagproton = 0;
                 
-                //start of prequesite conditions restricting q2 between 1 and 10
+                //start of prequesite conditions confining q_squared between 1 and 10
                 mctrk4q2.SetXYZM(mc_px_array[ic], mc_py_array[ic],mc_pz_array[ic],mc_mass_array[ic]);
-                        
-                h2_eta_MC->Fill(mctrk4q2.Eta());//plotted later
-                h2_e_MC->Fill(mctrk4q2.E());//plotted later
                         
                 scatElecEnergMC = mctrk4q2.E();
                 thetaMC = mctrk4q2.Theta();
@@ -442,8 +466,14 @@ void analyzeFF_eicrecon5(){
                         
                 q2 = 4 * incbeame.E() * scatElecEnergMC * TMath::Sin(thetaMC/2.0) * TMath::Sin(thetaMC/2.0);
                 
-                if (q2 >= 1 && q2 <= 10 ){
+                if (q2 > 1 && q2 < 10 ){
                     mtq->Fill(q2);
+                }
+                
+                if (q2 > 0 && q2 < 20 ){
+                    //mtq->Fill(q2);
+                    h2_eta_MC->Fill(mctrk4q2.Eta());
+                    h2_e_MC->Fill(mctrk4q2.E());
                     
                     //for the final proton
                     vec1.SetXYZM(mc_px_array[6], mc_py_array[6], mc_pz_array[6],mc_mass_array[6]);
@@ -497,11 +527,6 @@ void analyzeFF_eicrecon5(){
                     h4_e_MC->Fill(vec7.E());
                     
                     //for the incoming proton
-                    //iproton.SetXYZM(mc_px_array[3], mc_py_array[3], mc_pz_array[3],mc_mass_array[3]);
-                    //pT cut at 200MeV
-                    //if (iproton.Pt() >= 0.2){
-                      //  jproton = iproton;
-                    //}
                     h3_eta_MC->Fill(iproton.Eta());
                     h3_px_MC->Fill(iproton.Px());
                     h3_py_MC->Fill(iproton.Py());
@@ -528,12 +553,14 @@ void analyzeFF_eicrecon5(){
                     
                     //cout <<"Electron: " << vec3.E() << "; Proton: " << vec1.E() << "; J/Psi: " << ijpsi.E() << endl;
                     
+                    //Kinematics calculations for the MC
                     TLorentzVector diff3 = incbeam - vec1;
                     t3 = -1*diff3.Dot(diff3);//for MC
                     mtgg->Fill(t3);
                     ixb = q2/(2.0 * incbeam.Dot(iphoton));//mc
                     xb->Fill(ixb);
-                    ixv = (q2 + ijpsi.M()*ijpsi.M())/(2.0 * incbeam.Dot(iphoton));
+                    //ixv = (q2 + ijpsi.M()*ijpsi.M())/(2.0 * incbeam.Dot(iphoton));
+                    ixv = (q2 + ijpsi.Dot(ijpsi))/(2.0 * incbeam.Dot(iphoton));
                     xv->Fill(ixv);
                     
                     JPsi1 = vec2 + vecjpsi;
@@ -552,11 +579,6 @@ void analyzeFF_eicrecon5(){
                     mcjpsipos_e_vs_pz->Fill(vec2.Pz(), vec2.E());
                     mcsce_e_vs_pz->Fill(vec3.Pz(), vec3.E());
                     
-                    //applying a cut 20<E-Pz<40 GeV
-                    if (((vecjpsi + vec2 + vec3).E() - (vecjpsi + vec2 + vec3).Pz()) > 20 && ((vecjpsi + vec2 + vec3).E() - (vecjpsi + vec2 + vec3).Pz()) < 40){
-                        mcjpsie_e_minus_pz->Fill((vecjpsi + vec2 + vec3).E() - (vecjpsi + vec2 + vec3).Pz());
-                    }
-                    
                     mcjpsie_theta_vs_phi->Fill(vecjpsi.Theta(), vecjpsi.Phi());
                     mcjpsipos_theta_vs_phi->Fill(vec2.Theta(), vec2.Phi());
                     mcsce_theta_vs_phi->Fill(vec3.Theta(), vec3.Phi());
@@ -569,8 +591,27 @@ void analyzeFF_eicrecon5(){
                     mcjpsipos_phi_vs_e->Fill(vec2.Phi(), vec2.E());
                     mcsce_phi_vs_e->Fill(vec3.Phi(), vec3.E());
                     
-                    mcjpsitwoenergy->Fill(2*vecjpsi.E());
-                    mcsctwoenergy->Fill(2*vec3.E());
+                    /*cout <<"Energy SC e: " << vec3.E() << "; Energy JPsi e: " << vecjpsi.E() << endl;
+                    cout <<"Eta SC e: " << vec3.Eta() << "; Eta JPsi e: " << vecjpsi.Eta() << endl;
+                    cout <<"------------------------" << endl;*/
+                    
+                    //if(abs(vec3.E()) > abs(vecjpsi.E()) ){
+                    if(vec3.E() > vecjpsi.E()){
+                        vec3mc = vec3;
+                        vecjpsimc = vecjpsi;
+                        
+                        
+                        if (((vecjpsimc + vec2 + vec3mc).E() - (vecjpsimc + vec2 + vec3mc).Pz()) > 30 && ((vecjpsimc + vec2 + vec3mc).E() - (vecjpsimc + vec2 + vec3mc).Pz()) < 38){
+                            lk++;
+                            
+                            mcjpsie_e_minus_pzmc->Fill((vecjpsimc + vec2 + vec3mc).E() - (vecjpsimc + vec2 + vec3mc).Pz());
+                            
+                        }
+                        
+                    }
+                    
+                    rap = (incbeam.Dot(iphoton)) / (incbeam.Dot(incbeame));
+                    mcrapid->Fill(rap);
                     
                     /*for (int ic = 0; ic < recop_p_x.GetSize(); ic++){
                         ijpsi.SetXYZM(recop_p_x[ic], recop_p_y[ic], recop_p_z[ic], recop_p_m[ic]);
@@ -583,8 +624,6 @@ void analyzeFF_eicrecon5(){
                         //reco jpsi
                         
                         if (reco_RP_pdg[iRPPart] == 2212){
-                            jjpsi.SetXYZM(reco_RP_px[iRPPart], reco_RP_py[iRPPart], reco_RP_pz[iRPPart], reco_RP_m[iRPPart]);
-                            
                             TLorentzVector prec_romanpots(reco_RP_px[iRPPart], reco_RP_py[iRPPart], reco_RP_pz[iRPPart], reco_RP_e[iRPPart]);
                             
                             //place a pT cut on reconstructeed proton
@@ -618,9 +657,6 @@ void analyzeFF_eicrecon5(){
                         
                         TLorentzVector prec_omd(reco_OMD_px[iOMDPart], reco_OMD_py[iOMDPart], reco_OMD_pz[iOMDPart], reco_OMD_e[iOMDPart]);
                         
-                        //place a pT cut on reconstructeed proton
-                        //if (prec_omd.Pt() >= 0.5){
-                            
                             vec6.SetXYZM(reco_OMD_px[iOMDPart], reco_OMD_py[iOMDPart], reco_OMD_pz[iOMDPart], reco_OMD_m[iOMDPart]);
                             
                             //if (prec_omd.Eta()>4){
@@ -635,7 +671,6 @@ void analyzeFF_eicrecon5(){
                                 h_omd_occupancy_map->Fill(global_hit_OMD_x[iOMDPart], global_hit_OMD_y[iOMDPart]);
                             }
                         break;
-                        //}
                     }
                     
                     
@@ -683,9 +718,6 @@ void analyzeFF_eicrecon5(){
                     for(int iRecoTrk = 0; iRecoTrk < reco_track_x.GetSize(); iRecoTrk++){
                         
                         TLorentzVector prec_reco_tracks(reco_track_x[iRecoTrk], reco_track_y[iRecoTrk], reco_track_z[iRecoTrk], reco_track_e[iRecoTrk]);
-                        
-                        //place a pT cut on reconstructeed proton
-                        //if (prec_reco_tracks.Pt() >= 0.5){
                             
                             prec_reco_tracks.RotateY(0.025); //remove crossing angle for B0!!!
                             
@@ -702,8 +734,6 @@ void analyzeFF_eicrecon5(){
                                 h_e_reco_track->Fill(prec_reco_tracks.E());
                             }
                         break;
-                        //}
-                        
                     }
                     
                     /*cout << reco_track_x.GetSize() <<" iRecontrk_x " << endl;//iRecontrk_x
@@ -726,151 +756,129 @@ void analyzeFF_eicrecon5(){
                     iEvent++;
                     
                     flag1 = 0;
-                    flag2 = 0;
-                    flag3 = 0;
-                    
-                    for(int rcp=0;rcp<reco_track_x.GetSize();rcp++){
-                        /*if (reco_track_x.GetSize() > 2){
-                         cout <<"Number of Iterations: "<< rcp <<" -> Partilcles: " << recop_pdg[rcp] << endl;}*/
-                        
-                        //mctrk.SetXYZ(mc_px_array[imc], mc_py_array[imc], mc_pz_array[imc]);//previous
-                        //if(reco_track_x.GetSize()>4){
-                        //cout <<"Number of Iterations: "<< rcp <<" -> Partilcles: " << reco_track_pdg[rcp] << endl;
+                    for(int rcp=0;rcp<=reco_track_x.GetSize();rcp++){
                         
                         if(reco_track_x.GetSize() == 3){
                             
-                            if(reco_track_pdg[0] != reco_track_pdg[1] && reco_track_pdg[0] != reco_track_pdg[2] && reco_track_pdg[1] != reco_track_pdg[2]){
-                                
-                                if(reco_track_pdg[0] == 11 && (reco_track_pdg[1] == -11 || reco_track_pdg[2] == -11)){
-                                    rcpv1.SetXYZM(reco_track_x[0], reco_track_y[0], reco_track_z[0],reco_track_m[0]);
-                                    
-                                    flag2++;
-                                }
-                                if(reco_track_pdg[1] == 11 && (reco_track_pdg[0] == -11 || reco_track_pdg[2] == -11)){
-                                    rcpv1.SetXYZM(reco_track_x[1], reco_track_y[1], reco_track_z[1],reco_track_m[1]);
-                                    
-                                    flag2++;
-                                }
-                                if(reco_track_pdg[2] == 11 && (reco_track_pdg[0] == -11 || reco_track_pdg[1] == -11)){
-                                    rcpv1.SetXYZM(reco_track_x[2], reco_track_y[2], reco_track_z[2],reco_track_m[2]);
-                                    
-                                    flag2++;
-                                }
-                                if(reco_track_pdg[0] == -11 && (reco_track_pdg[1] == 11 || reco_track_pdg[2] == 11)){
-                                    rcpv2.SetXYZM(reco_track_x[0], reco_track_y[0], reco_track_z[0],reco_track_m[0]);
-                                   
-                                    flag2++;
-                                }
-                                if(reco_track_pdg[1] == -11 && (reco_track_pdg[0] == 11 || reco_track_pdg[2] == 11)){
-                                    rcpv2.SetXYZM(reco_track_x[1], reco_track_y[1], reco_track_z[1],reco_track_m[1]);
-                                   
-                                    flag2++;
-                                }
-                                if(reco_track_pdg[2] == -11 && (reco_track_pdg[0] == 11 || reco_track_pdg[1] == 11)){
-                                    rcpv2.SetXYZM(reco_track_x[2], reco_track_y[2], reco_track_z[2],reco_track_m[2]);
-                                    
-                                    flag2++;
-                                }
-                                
+                            if(reco_track_pdg[0] == 11 && reco_track_pdg[1] == 11 && reco_track_pdg[2] == -11){
+                                int icheck = 0;
+                                int jcheck = 1;
+                                int kcheck = 2;
+                                rcpv1rc.SetXYZM(reco_track_x[icheck], reco_track_y[icheck], reco_track_z[icheck],reco_track_m[icheck]);
+                                eq1rc.SetXYZM(reco_track_x[jcheck], reco_track_y[jcheck], reco_track_z[jcheck],reco_track_m[jcheck]);
+                                rcpv2.SetXYZM(reco_track_x[kcheck], reco_track_y[kcheck], reco_track_z[kcheck],reco_track_m[kcheck]);
+                                flag1++;
                             }
-                            if ((reco_track_pdg[0] == 11 && reco_track_pdg[1] == 11) ||(reco_track_pdg[0] == 11 && reco_track_pdg[2] == 11) || (reco_track_pdg[1] == 11 && reco_track_pdg[2] == 11)){
-                                //cout << " re1: " << reco_track_pdg[0] << " re2: " << reco_track_pdg[1] << " re3: " << reco_track_pdg[2] << endl;
-                                if(reco_track_pdg[0] == 11 && reco_track_pdg[1] == 11){
-                                    int icheck = 0;
-                                    int jcheck = 1;
-                                    if(reco_track_pdg[2] == -11){
-                                        eq1.SetXYZM(reco_track_x[icheck], reco_track_y[icheck], reco_track_z[icheck],reco_track_m[icheck]);
-                                        
-                                        rcpv1.SetXYZM(reco_track_x[jcheck], reco_track_y[jcheck], reco_track_z[jcheck],reco_track_m[jcheck]);
-                                        rcpv11.SetXYZM(reco_track_x[jcheck], reco_track_y[jcheck], reco_track_z[jcheck],reco_track_m[jcheck]);
-                                        rcpv2.SetXYZM(reco_track_x[2], reco_track_y[2], reco_track_z[2],reco_track_m[2]);
-                                        rcpv22.SetXYZM(reco_track_x[2], reco_track_y[2], reco_track_z[2],reco_track_m[2]);
-                                        
-                                    }
-                                    flag3++;
-                                    
-                                }
-                                if(reco_track_pdg[0] == 11 && reco_track_pdg[2] == 11){
-                                    int icheck = 0;
-                                    int jcheck = 2;
-                                    if(reco_track_pdg[1] == -11){
-                                        eq1.SetXYZM(reco_track_x[icheck], reco_track_y[icheck], reco_track_z[icheck],reco_track_m[icheck]);
-                                        
-                                        rcpv1.SetXYZM(reco_track_x[jcheck], reco_track_y[jcheck], reco_track_z[jcheck],reco_track_m[jcheck]);
-                                        rcpv11.SetXYZM(reco_track_x[jcheck], reco_track_y[jcheck], reco_track_z[jcheck],reco_track_m[jcheck]);
-                                        rcpv2.SetXYZM(reco_track_x[1], reco_track_y[1], reco_track_z[1],reco_track_m[1]);
-                                        rcpv22.SetXYZM(reco_track_x[1], reco_track_y[1], reco_track_z[1],reco_track_m[1]);
-                                        
-                                    }
-                                    flag3++;
-                                }
-                                if(reco_track_pdg[1] == 11 && reco_track_pdg[2] == 11){
-                                    int icheck = 1;
-                                    int jcheck = 2;
-                                    if(reco_track_pdg[0] == -11){
-                                        eq1.SetXYZM(reco_track_x[icheck], reco_track_y[icheck], reco_track_z[icheck],reco_track_m[icheck]);
-                                        
-                                        rcpv1.SetXYZM(reco_track_x[jcheck], reco_track_y[jcheck], reco_track_z[jcheck],reco_track_m[jcheck]);
-                                        rcpv11.SetXYZM(reco_track_x[jcheck], reco_track_y[jcheck], reco_track_z[jcheck],reco_track_m[jcheck]);
-                                        rcpv2.SetXYZM(reco_track_x[0], reco_track_y[0], reco_track_z[0],reco_track_m[0]);
-                                        rcpv22.SetXYZM(reco_track_x[0], reco_track_y[0], reco_track_z[0],reco_track_m[0]);
-                                        
-                                    }
-                                    flag3++;
-                                }
-                                
-                                
+                            if(reco_track_pdg[0] == 11 && reco_track_pdg[1] == -11 && reco_track_pdg[2] == 11){
+                                int icheck = 0;
+                                int jcheck = 2;
+                                int kcheck = 1;
+                                rcpv1rc.SetXYZM(reco_track_x[icheck], reco_track_y[icheck], reco_track_z[icheck],reco_track_m[icheck]);
+                                eq1rc.SetXYZM(reco_track_x[jcheck], reco_track_y[jcheck], reco_track_z[jcheck],reco_track_m[jcheck]);
+                                rcpv2.SetXYZM(reco_track_x[kcheck], reco_track_y[kcheck], reco_track_z[kcheck],reco_track_m[kcheck]);
+                                flag1++;
                             }
+                            if(reco_track_pdg[0] == -11 && reco_track_pdg[1] == 11 && reco_track_pdg[2] == 11){
+                                int icheck = 1;
+                                int jcheck = 2;
+                                int kcheck = 0;
+                                rcpv1rc.SetXYZM(reco_track_x[icheck], reco_track_y[icheck], reco_track_z[icheck],reco_track_m[icheck]);
+                                eq1rc.SetXYZM(reco_track_x[jcheck], reco_track_y[jcheck], reco_track_z[jcheck],reco_track_m[jcheck]);
+                                rcpv2.SetXYZM(reco_track_x[kcheck], reco_track_y[kcheck], reco_track_z[kcheck],reco_track_m[kcheck]);
+                                flag1++;
+                            }
+                            
+                            //if (abs(rcpv1rc.Pz()) > abs(eq1rc.Pz())){
+                            if (rcpv1rc.E() > eq1rc.E()){
+                                eq1 = rcpv1rc;
+                                rcpv1 = eq1rc;
+                            }
+                            if (eq1rc.E() > rcpv1rc.E()){
+                                eq1 = eq1rc;
+                                rcpv1 = rcpv1rc;
+                            }
+                            
                             
                         }
                         
                     }
                     
+                    double maxEnergy=-99.;
+                    double ecal_theta=-111111.;
+                    double ecal_phi=-111111.;
+                        double xpos=-999.;
+                        double ypos=-999.;
+                        for(int iclus=0;iclus<em_energy_array.GetSize();iclus++){
+                            if(em_energy_array[iclus]>maxEnergy){
+                                maxEnergy=em_energy_array[iclus];
+                                xpos=em_x_array[iclus];
+                                ypos=em_y_array[iclus];
+                                ecal_theta=theta_array[iclus];
+                                ecal_phi=phi_array[iclus];
+                            }
+                        }
+                    //cout << "Ecal energy: " << maxEnergy << "; Recon Scat: " << eq1.E() << endl;
+                    //cout << "Ecal theta: " << ecal_theta << "; Recon Scat theta: " << eq1.Theta() << endl;
+                    
+                    scat_e_RC->Fill(eq1.E());
+                    scat_e_EcalEnd->Fill(maxEnergy);
+                    
                     scatElecEnergChPct = eq1.E();
+                    scatElecEnergChPct2 = maxEnergy;
                     thetaChPct = eq1.Theta();
+                    thetaChPct2 = ecal_theta;
                     thetaChPct = thetaChPct - TMath::Pi();
+                    thetaChPct2 = thetaChPct2 - TMath::Pi();
                     q2_1 = 4 * incbeame.E() * scatElecEnergChPct * TMath::Sin(thetaChPct/2.0) * TMath::Sin(thetaChPct/2.0);
-                    if (iflagproton == 1){
+                    q2_2 = 4 * incbeame.E() * scatElecEnergChPct2 * TMath::Sin(thetaChPct2/2.0) * TMath::Sin(thetaChPct2/2.0);
+                    //if (iflagproton == 1 && q2_1 > 1 && q2_1 < 10){
+                    if (q2_1 > 0 && q2_1 < 20){
                         mtqq->Fill(q2_1);
                     }
+                    if (q2_2 > 0 && q2_2 < 20){
+                        mtqq_2->Fill(q2_2);
+                    }
                     
-                    if(flag3 == 0){
-                        JPsi22 = rcpv11 + rcpv22;
+                        JPsi22 = rcpv1 + rcpv2;
                         //rcJPsiMass11->Fill(JPsi22.M());
                         
-                        JPsi222 = eq1 + rcpv22;
+                        JPsi222 = eq1 + rcpv2;
                         //rcJPsiMass111->Fill(JPsi222.M());
                         
-                        if ((JPsi22.M() > 2 && JPsi22.M() < 3.6) && (JPsi222.M() > 2 && JPsi222.M() < 3.6)){
-                            rcJPsiMass11->Fill(JPsi22.M());
-                            scte=eq1;
-                        }
-                        if ((JPsi222.M() > 2 && JPsi222.M() < 3.6) && (JPsi22.M() > 2 && JPsi22.M() < 3.6)){
-                            rcJPsiMass111->Fill(JPsi222.M());
-                            scte=rcpv11;
-                        }
-                        //}
-                        
-                        JPsi2 = rcpv1 + rcpv2;
-                        rcJPsiMass1->Fill(JPsi2.M());
-                        diffjpsimass->Fill(JPsi1.M() - JPsi2.M());
+                    if ((JPsi22.M() > 2 && JPsi22.M() < 3.6) && (JPsi222.M() > 2 && JPsi222.M() < 3.6)){
+                        rcJPsiMass11->Fill(JPsi22.M());
                     }
+                    if ((JPsi222.M() > 2 && JPsi222.M() < 3.6) && (JPsi22.M() > 2 && JPsi22.M() < 3.6)){
+                        rcJPsiMass111->Fill(JPsi222.M());
+                    }
+                    
+                    JPsi2 = rcpv1 + rcpv2;
+                    rcJPsiMass1->Fill(JPsi2.M());
+                    diffjpsimass->Fill((JPsi1.M() - JPsi2.M())/JPsi1.M());
                     
                     TLorentzVector diff1 = incbeam - vec5;
                     t1 = -1*diff1.Dot(diff1);//for RP
                     ixb1 = q2_1/(2.0 * incbeam.Dot(iphoton));//recon
+                    ixb2 = q2_2/(2.0 * incbeam.Dot(iphoton));//recon
                     ixv1 = (q2_1 + ijpsi.M()*ijpsi.M())/(2.0 * incbeam.Dot(iphoton));
+                    ixv2 = (q2_2 + ijpsi.M()*ijpsi.M())/(2.0 * incbeam.Dot(iphoton));
                     
+                    //if (iflagproton == 1){
                     if (iflagproton == 1){
                         mtg->Fill(t1);
-                        xb1->Fill(ixb1);
-                        xv1->Fill(ixv1);
-                        
-                        difft->Fill(t3 - t1);
-                        diffq2->Fill(q2 - q2_1);
-                        diffx_v->Fill(ixv - ixv1);
                     }
-                    if (flag2 == 0 && flag3 == 0){
+                        xb1->Fill(ixb1);
+                        xb2->Fill(ixb2);
+                        xv1->Fill(ixv1);
+                        xv2->Fill(ixv2);
+                        
+                        difft->Fill((t3 - t1)/t3);
+                        diffq2->Fill((q2 - q2_1)/q2);
+                        diffq2_2->Fill((q2 - q2_2)/q2);
+                        diffx_v->Fill((ixv - ixv1)/ixv);
+                        diffx_v2->Fill((ixv - ixv2)/ixv);
+                    //}
+                    //if (flag1 == 0){
                         rcElectron->Fill(eq1.Eta());
                         rcPositron->Fill(rcpv2.Eta());
                         rcPositronpt->Fill(rcpv2.Pt());
@@ -883,36 +891,39 @@ void analyzeFF_eicrecon5(){
                         rcsce_pz_vs_eta->Fill(eq1.Eta(), eq1.Pz());
                         
                         rcjpsie_e_vs_eta->Fill(rcpv1.Eta(), rcpv1.E());
-                        rcsce_e_vs_eta->Fill(eq1.Eta(), eq1.E());
+                        rcsce_e_vs_eta2->Fill(eq1.Eta(), maxEnergy); //eq1.E(); // for the energy of the scattered electrons
+                        rcsce_e_vs_eta->Fill(eq1.Eta(), eq1.E()); //eq1.E(); // for the energy of the scattered electrons
                         
                         rcjpsie_e_vs_pz->Fill(rcpv1.Pz(), rcpv1.E());
                         rcjpsipos_e_vs_pz->Fill(rcpv2.Pz(), rcpv2.E());
-                        rcsce_e_vs_pz->Fill(eq1.Pz(), eq1.E());
+                        rcsce_e_vs_pz->Fill(eq1.Pz(), eq1.E());//eq1.E(); // for the energy of the scattered electrons
+                        rcsce_e_vs_pz2->Fill(eq1.Pz(), maxEnergy);//eq1.E(); // for the energy of the scattered electrons
                         
-                        //applying a cut 20<E-pz<40 GeV
-                        if (((rcpv1 + rcpv2 + eq1).E() - (rcpv1 + rcpv2 + eq1).Pz()) > 20 && ((rcpv1 + rcpv2 + eq1).E() - (rcpv1 + rcpv2 + eq1).Pz()) < 40){
-                            
-                            rcjpsie_e_minus_pz->Fill((rcpv1 + rcpv2 + eq1).E() - (rcpv1 + rcpv2 + eq1).Pz());
-                        }
-                        
+                        //applying a cut 30<E-pz<38 GeV
+                       
                         rcjpsie_theta_vs_phi->Fill(rcpv1.Theta(), rcpv1.Phi());
                         rcjpsipos_theta_vs_phi->Fill(rcpv2.Theta(), rcpv2.Phi());
-                        rcsce_theta_vs_phi->Fill(eq1.Theta(), eq1.Phi());
+                        rcsce_theta_vs_phi->Fill(eq1.Theta(), eq1.Phi());//eq1.Theta() and eq1.Phi() // for the theta of the scattered electrons
+                        rcsce_theta_vs_phi2->Fill(ecal_theta, ecal_phi);//eq1.Theta() and eq1.Phi() // for the theta of the scattered electrons
                         
                         rcjpsie_phi_vs_eta->Fill(rcpv1.Phi(), rcpv1.Eta());
                         rcjpsipos_phi_vs_eta->Fill(rcpv2.Phi(), rcpv2.Eta());
-                        rcsce_phi_vs_eta->Fill(eq1.Phi(), eq1.Eta());
+                        rcsce_phi_vs_eta->Fill(eq1.Phi(), eq1.Eta()); // eq1.Phi() // for the theta of the scattered electrons
+                        rcsce_phi_vs_eta2->Fill(ecal_phi, eq1.Eta()); // eq1.Phi() // for the theta of the scattered electrons
                         
                         rcjpsie_phi_vs_e->Fill(rcpv1.Phi(), rcpv1.E());
                         rcjpsipos_phi_vs_e->Fill(rcpv2.Phi(), rcpv2.E());
-                        rcsce_phi_vs_e->Fill(eq1.Phi(), eq1.E());
+                        rcsce_phi_vs_e->Fill(eq1.Phi(), eq1.E());//eq1.E() and eq1.Phi() // for the energy of the scattered electrons
+                        rcsce_phi_vs_e2->Fill(ecal_phi, maxEnergy);//eq1.E() and eq1.Phi() // for the energy of the scattered electrons
                         
                         //cout <<"Electron: " << eq1.E() << "; Proton: " << vec4.E() << "; e+ep: " << (rcpv1+rcpv2).E() <<endl;
-                        
-                        rcjpsitwoenergy->Fill(2*rcpv1.E());
-                        rcsctwoenergy->Fill(2*eq1.E());
-                        
-                    }
+                        if (((rcpv1 + rcpv2 + eq1).E() - (rcpv1 + rcpv2 + eq1).Pz()) > 30 && ((rcpv1 + rcpv2 + eq1).E() - (rcpv1 + rcpv2 + eq1).Pz()) < 38){
+                            lk1++;
+                            
+                            rcjpsie_e_minus_pz->Fill((rcpv1 + rcpv2 + eq1).E() - (rcpv1 + rcpv2 + eq1).Pz());
+                            
+                       }
+                    //}
                     
                 }// Q2 if
             }// event loop
@@ -1121,11 +1132,12 @@ void analyzeFF_eicrecon5(){
     jpsi_MCReco->Draw();
     
     TCanvas *c5 = new TCanvas("c5","c5",800,800);
+    c5->SetLogy();
     mtg->GetXaxis()->SetTitle("-t");
-    mtg->GetXaxis()->SetRangeUser(0,2);
+    mtg->GetXaxis()->SetRangeUser(0.00001,2);
     mtg->SetStats(0);
     mtg->GetYaxis()->SetTitleSize(0.03);
-    mtg->GetYaxis()->SetRangeUser(0,3000);
+    mtg->GetYaxis()->SetRangeUser(1,4000);
     mtg->SetLineColor(2);//red plot
     mtg->SetLineWidth(6);
     mtg->SetMarkerStyle(8);
@@ -1413,10 +1425,13 @@ void analyzeFF_eicrecon5(){
     rcpzetasc->AddEntry(rcsce_pz_vs_eta,"SC e Recon.", "");
     rcpzetasc->Draw();
     
-    TCanvas *q_sq = new TCanvas("q_sq","q_sq",800,800);
+    TCanvas *q_sq = new TCanvas("q_sq","q_sq",1400,700);
+    q_sq->Divide(2,1);
+    q_sq->SetLogy();
+    q_sq->cd(1);
     mtqq->GetXaxis()->SetTitle("Q^{2}");
-    mtqq->GetYaxis()->SetRangeUser(0,3250);
-    mtqq->SetStats(0);
+    //mtqq->GetYaxis()->SetRangeUser(10,4000);
+    //mtqq->SetStats(0);
     mtqq->SetMarkerStyle(8);
     mtqq->SetMarkerColor(2);
     //mtqq->SetMarkerSize(1);
@@ -1436,7 +1451,7 @@ void analyzeFF_eicrecon5(){
     rp3->Draw();
     rp3->GetLowerRefYaxis()->SetTitle("ratio");
     rp3->GetLowerRefGraph()->SetMinimum(0);
-    rp3->GetLowerRefGraph()->SetMaximum(1);
+    rp3->GetLowerRefGraph()->SetMaximum(2);
     rp3->SetSeparationMargin(0.0);
     rp3->GetLowerRefGraph()->SetMarkerStyle(8);
     
@@ -1445,6 +1460,39 @@ void analyzeFF_eicrecon5(){
     qq2->AddEntry(mtq,"MC", "p");
     qq2->AddEntry(mtqq, "Full Reconstruction", "l");
     qq2->Draw();
+    
+    q_sq->cd(2);
+    mtqq_2->GetXaxis()->SetTitle("Q^{2}");
+    //mtqq_2->GetYaxis()->SetRangeUser(10,4000);
+    //mtqq_2->SetStats(0);
+    mtqq_2->SetMarkerStyle(8);
+    mtqq_2->SetMarkerColor(2);
+    //mtqq_2->SetMarkerSize(1);
+    mtqq_2->GetYaxis()->SetTitleSize(0.03);
+    mtqq_2->SetLineColor(2);//black plot
+    //mtqq_2->SetFillColor(kGreen-9);
+    mtqq_2->SetLineWidth(6);
+    mtqq_2->Draw();
+    
+    mtq->SetMarkerStyle(8);
+    mtq->SetMarkerColor(1);
+    mtq->SetLineColor(1);
+    //mtqq->SetLineWidth(6);
+    mtq->Draw("SAME");
+    
+    TRatioPlot* rp32 = new TRatioPlot(mtqq_2, mtq);
+    rp32->Draw();
+    rp32->GetLowerRefYaxis()->SetTitle("ratio");
+    rp32->GetLowerRefGraph()->SetMinimum(0);
+    rp32->GetLowerRefGraph()->SetMaximum(2);
+    rp32->SetSeparationMargin(0.0);
+    rp32->GetLowerRefGraph()->SetMarkerStyle(8);
+    
+    rp32->GetUpperPad()->cd();
+    TLegend *qq22= new TLegend(0.8, 0.8, 0.9, 0.9);
+    qq22->AddEntry(mtq,"MC", "p");
+    qq22->AddEntry(mtqq_2, "Full Reconstruction EcalEndcap", "l");
+    qq22->Draw();
     
     TCanvas *sc = new TCanvas("sc","sc",1200,600);
     sc->Divide(2,1);
@@ -1457,8 +1505,10 @@ void analyzeFF_eicrecon5(){
     h2_e_MC->GetXaxis()->SetRangeUser(-0,20);
     h2_e_MC->Draw();
     
-    TCanvas *xbjk = new TCanvas("xbjk","xbjk",800,800);
+    TCanvas *xbjk = new TCanvas("xbjk","xbjk",1400,700);
     xbjk->SetLogy();
+    xbjk->Divide(2,1);
+    xbjk->cd(1);
     xb1->GetXaxis()->SetTitle("x_{bj}");
     xb1->GetXaxis()->SetRangeUser(0,0.1);
     //xb1->GetYaxis()->SetRangeUser(0,6000);
@@ -1478,7 +1528,7 @@ void analyzeFF_eicrecon5(){
     rp1->Draw();
     rp1->GetLowerRefYaxis()->SetTitle("ratio");
     rp1->GetLowerRefGraph()->SetMinimum(0);
-    rp1->GetLowerRefGraph()->SetMaximum(5);
+    rp1->GetLowerRefGraph()->SetMaximum(2);
     rp1->SetSeparationMargin(0.0);
     rp1->GetLowerRefGraph()->SetMarkerStyle(8);
    
@@ -1488,10 +1538,40 @@ void analyzeFF_eicrecon5(){
     xbjok->AddEntry(xb1, "Full Reconstruction", "l");
     xbjok->Draw();
     
-    TCanvas *x_v = new TCanvas("x_v","x_v",800,800);
+    xbjk->cd(2);
+    xb2->GetXaxis()->SetTitle("x_{bj}");
+    xb2->GetXaxis()->SetRangeUser(0,0.1);
+    //xb2->GetYaxis()->SetRangeUser(0,6000);
+    xb2->SetStats(0);
+    xb2->GetYaxis()->SetTitleSize(0.03);
+    xb2->SetLineColor(2);//red plot
+    xb2->SetLineWidth(6);
+    xb2->Draw();
+    
+    xb->SetMarkerStyle(8);
+    xb->SetMarkerColor(1);
+    xb->Draw("SAME");
+    
+    auto rp12 = new TRatioPlot(xb2, xb);
+    rp12->Draw();
+    rp12->GetLowerRefYaxis()->SetTitle("ratio");
+    rp12->GetLowerRefGraph()->SetMinimum(0);
+    rp12->GetLowerRefGraph()->SetMaximum(2);
+    rp12->SetSeparationMargin(0.0);
+    rp12->GetLowerRefGraph()->SetMarkerStyle(8);
+   
+    rp12->GetUpperPad()->cd();
+    TLegend *xbjok1= new TLegend(0.8, 0.8, 0.9, 0.9);
+    xbjok1->AddEntry(xb,"MC", "p");
+    xbjok1->AddEntry(xb2, "Full Reconstruction EcalEnd", "l");
+    xbjok1->Draw();
+    
+    TCanvas *x_v = new TCanvas("x_v","x_v",1400,700);
     x_v->SetLogy();
+    x_v->Divide(2,1);
+    x_v->cd(1);
     xv1->GetXaxis()->SetTitle("x_{v}");
-    xv1->GetXaxis()->SetRangeUser(0,0.1);
+    //xv1->GetXaxis()->SetRangeUser(0.00001,0.1);
     //xv1->GetYaxis()->SetRangeUser(0,6000);
     xv1->SetStats(0);
     xv1->GetYaxis()->SetTitleSize(0.03);
@@ -1507,7 +1587,7 @@ void analyzeFF_eicrecon5(){
     rp2->Draw();
     rp2->GetLowerRefYaxis()->SetTitle("ratio");
     rp2->GetLowerRefGraph()->SetMinimum(0);
-    rp2->GetLowerRefGraph()->SetMaximum(1);
+    rp2->GetLowerRefGraph()->SetMaximum(2);
     rp2->SetSeparationMargin(0.0);
     rp2->GetLowerRefGraph()->SetMarkerStyle(8);
     
@@ -1517,23 +1597,76 @@ void analyzeFF_eicrecon5(){
     x_vv->AddEntry(xv1, "Full Reconstruction", "l");
     x_vv->Draw();
     
+    x_v->cd(2);
+    xv2->GetXaxis()->SetTitle("x_{v}");
+    //xv2->GetXaxis()->SetRangeUser(0.00001,0.1);
+    //xv2->GetYaxis()->SetRangeUser(0,6000);
+    xv2->SetStats(0);
+    xv2->GetYaxis()->SetTitleSize(0.03);
+    xv2->SetLineColor(2);//red plot
+    xv2->SetLineWidth(6);
+    xv2->Draw();
+    
+    xv->SetMarkerStyle(8);
+    xv->SetMarkerColor(1);
+    xv->Draw("SAME");
+    
+    TRatioPlot* rp22 = new TRatioPlot(xv2, xv);
+    rp22->Draw();
+    rp22->GetLowerRefYaxis()->SetTitle("ratio");
+    rp22->GetLowerRefGraph()->SetMinimum(0);
+    rp22->GetLowerRefGraph()->SetMaximum(2);
+    rp22->SetSeparationMargin(0.0);
+    rp22->GetLowerRefGraph()->SetMarkerStyle(8);
+    
+    rp22->GetUpperPad()->cd();
+    TLegend *x_vv2= new TLegend(0.8, 0.8, 0.9, 0.9);
+    x_vv2->AddEntry(xv,"MC", "p");
+    x_vv2->AddEntry(xv2, "Full Reconstruction EcalEnd", "l");
+    x_vv2->Draw();
+    
     TCanvas *diff = new TCanvas("diff","diff",1200,1200);
     diff->Divide(2,2);
     diff->cd(1);
-    //diffjpsimass->GetXaxis()->SetRangeUser(-5,2);
+    diffjpsimass->GetXaxis()->SetRangeUser(-2,2);
+    diffjpsimass->SetMarkerStyle(8);
+    diffjpsimass->SetLineWidth(6);
+    diffjpsimass->SetLineColor(1);
     diffjpsimass->Draw();
     
     diff->cd(2);
-    //diffq2->GetXaxis()->SetRangeUser(-0,20);
-    diffq2->Draw();
+    diffq2_2->GetXaxis()->SetRangeUser(-2,2);
+    diffq2_2->SetLineColor(2);
+    diffq2_2->SetLineWidth(6);
+    diffq2_2->Draw();
+    diffq2->SetLineColor(1);
+    diffq2->SetLineWidth(6);
+    diffq2->Draw("SAME");
+    
+    TLegend *diffq= new TLegend(0.8, 0.8, 0.9, 0.9);
+    diffq->AddEntry(diffq2,"Recon", "l");
+    diffq->AddEntry(diffq2_2, "Recon EcalEnd", "l");
+    diffq->Draw();
     
     diff->cd(3);
-    //difft->GetXaxis()->SetRangeUser(-5,2);
+    difft->GetXaxis()->SetRangeUser(-2,2);
+    difft->SetLineColor(1);
+    difft->SetLineWidth(6);
     difft->Draw();
     
     diff->cd(4);
-    //diffx_v->GetXaxis()->SetRangeUser(-5,2);
-    diffx_v->Draw();
+    diffx_v2->GetXaxis()->SetRangeUser(-2,2);
+    diffx_v2->SetLineColor(2);
+    diffx_v2->SetLineWidth(6);
+    diffx_v2->Draw();
+    diffx_v->SetLineColor(1);
+    diffx_v->SetLineWidth(6);
+    diffx_v->Draw("SAME");
+    
+    TLegend *diffx= new TLegend(0.8, 0.8, 0.9, 0.9);
+    diffx->AddEntry(diffx_v,"Recon", "l");
+    diffx->AddEntry(diffx_v2, "Recon EcalEnd", "l");
+    diffx->Draw();
     
     TCanvas *E_vs_eta = new TCanvas("E_vs_eta","E_vs_eta",1200,1200);
     E_vs_eta->Divide(2,2);
@@ -1663,53 +1796,23 @@ void analyzeFF_eicrecon5(){
     E_minus_pz->Divide(2,1);
     
     E_minus_pz->cd(1);
-    mcjpsie_e_minus_pz->GetXaxis()->SetTitle("E - P_{z}");
-    mcjpsie_e_minus_pz->GetXaxis()->SetRangeUser(20,40);
-    mcjpsie_e_minus_pz->SetStats(0);
-    mcjpsie_e_minus_pz->GetYaxis()->SetTitleSize(0.03);
-    //mcjpsie_e_minus_pz->GetYaxis()->SetTitle("Final Proton");
-    mcjpsie_e_minus_pz->SetLineColor(1);//
-    mcjpsie_e_minus_pz->SetLineWidth(6);
-    mcjpsie_e_minus_pz->Draw();
-    
-    /*mcjpsipos_e_minus_pz->SetLineColor(7);//
-    mcjpsipos_e_minus_pz->SetLineWidth(6);
-    mcjpsipos_e_minus_pz->Draw("SAME");
-    
-    mcsce_e_minus_pz->SetLineColor(2);//
-    mcsce_e_minus_pz->SetLineWidth(6);
-    mcsce_e_minus_pz->Draw("SAME");
-    
-    rcjpsie_e_minus_pz->SetLineColor(3);//
-    rcjpsie_e_minus_pz->SetLineWidth(6);
-    rcjpsie_e_minus_pz->Draw("SAME");
-    
-    rcjpsipos_e_minus_pz->SetLineColor(6);//
-    rcjpsipos_e_minus_pz->SetLineWidth(6);
-    rcjpsipos_e_minus_pz->Draw("SAME");
-    
-    rcsce_e_minus_pz->SetLineColor(4);//
-    rcsce_e_minus_pz->SetLineWidth(6);
-    rcsce_e_minus_pz->Draw("SAME"); 
-    
-    djpsicheck_e_minus_pz->SetLineColor(5);//
-    djpsicheck_e_minus_pz->SetLineWidth(6);
-    djpsicheck_e_minus_pz->Draw("SAME");*/
+    mcjpsie_e_minus_pzmc->GetXaxis()->SetTitle("E - P_{z}");
+    mcjpsie_e_minus_pzmc->GetXaxis()->SetRangeUser(30,38);
+    //mcjpsie_e_minus_pzmc->SetStats(0);
+    mcjpsie_e_minus_pzmc->GetYaxis()->SetTitleSize(0.03);
+    //mcjpsie_e_minus_pzmc->GetYaxis()->SetTitle("Final Proton");
+    mcjpsie_e_minus_pzmc->SetLineColor(1);//
+    mcjpsie_e_minus_pzmc->SetLineWidth(6);
+    mcjpsie_e_minus_pzmc->Draw();
     
     TLegend *mceminuspz = new TLegend(0.8, 0.8, 0.9, 0.9);
-    mceminuspz->AddEntry(mcjpsie_e_minus_pz,"MC JPsi e", "l");
-    //mceminuspz->AddEntry(mcjpsipos_e_minus_pz,"MC JPsi e^{+}", "l");
-    //mceminuspz->AddEntry(mcsce_e_minus_pz, "MC SC e", "l");
-    //mceminuspz->AddEntry(rcjpsie_e_minus_pz, "RC JPsi e", "l");
-    //mceminuspz->AddEntry(rcjpsipos_e_minus_pz, "RC JPsi e^{+}", "l");
-    //mceminuspz->AddEntry(rcsce_e_minus_pz, "RC SC e", "l");
-    //mceminuspz->AddEntry(djpsicheck_e_minus_pz, "jpsi", "l");
+    mceminuspz->AddEntry(mcjpsie_e_minus_pzmc,"MC JPsi e", "l");
     mceminuspz->Draw();
     
     E_minus_pz->cd(2);
     rcjpsie_e_minus_pz->GetXaxis()->SetTitle("E - P_{z}");
-    rcjpsie_e_minus_pz->GetXaxis()->SetRangeUser(20,40);
-    rcjpsie_e_minus_pz->SetStats(0);
+    rcjpsie_e_minus_pz->GetXaxis()->SetRangeUser(30,38);
+    //rcjpsie_e_minus_pz->SetStats(0);
     rcjpsie_e_minus_pz->GetYaxis()->SetTitleSize(0.03);
     //rcjpsie_e_minus_pz->GetYaxis()->SetTitle("Final Proton");
     rcjpsie_e_minus_pz->SetLineColor(1);//
@@ -1942,40 +2045,42 @@ void analyzeFF_eicrecon5(){
     rcscephie->AddEntry(rcsce_phi_vs_e,"SC e - RC", "");
     rcscephie->Draw();
     
-    TCanvas *twoenergy = new TCanvas("twoenergy","twoenergy",800,800);
-    mcjpsitwoenergy->GetXaxis()->SetTitle("E[GeV]");
-    mcjpsitwoenergy->GetXaxis()->SetRangeUser(-5,40);
-    mcjpsitwoenergy->SetStats(0);
-    mcjpsitwoenergy->GetYaxis()->SetRangeUser(0,16000);
-    //mcjpsitwoenergy->GetYaxis()->SetTitleSize(0.03);
-    //mcjpsitwoenergy->GetYaxis()->SetTitle("Final Proton");
-    mcjpsitwoenergy->SetLineColor(1);//
-    mcjpsitwoenergy->SetLineWidth(6);
-    mcjpsitwoenergy->Draw();
+    TCanvas *rapid = new TCanvas("rapid","rapid",800,800);
+    rapid->SetLogy();
+    mcrapid->GetXaxis()->SetTitle("y");
+    //mcrapid->GetXaxis()->SetRangeUser(-10,20);
+    mcrapid->SetStats(0);
+    mcrapid->GetYaxis()->SetTitleSize(0.03);
+    //mcrapid->GetYaxis()->SetTitle("Final Proton");
+    mcrapid->SetLineColor(1);//red plot
+    mcrapid->SetLineWidth(6);
+    mcrapid->Draw();
     
-    mcsctwoenergy->SetLineColor(2);//
-    mcsctwoenergy->SetLineWidth(6);
-    mcsctwoenergy->Draw("SAME");
+    TCanvas *energies = new TCanvas("energies","energies",800,800);
+    h2_e_MC->GetXaxis()->SetTitle("E[GeV]");
+    //h2_e_MC->GetXaxis()->SetRangeUser(-10,20);
+    h2_e_MC->SetStats(0);
+    //h2_e_MC->GetYaxis()->SetTitleSize(0.03);
+    h2_e_MC->SetLineColor(1);
+    h2_e_MC->SetLineWidth(6);
+    h2_e_MC->Draw();
     
-    rcjpsitwoenergy->SetLineColor(3);//
-    rcjpsitwoenergy->SetLineWidth(6);
-    rcjpsitwoenergy->Draw("SAME");
+    scat_e_RC->SetLineColor(2);
+    scat_e_RC->SetLineWidth(6);
+    scat_e_RC->Draw("SAME");
     
-    rcsctwoenergy->SetLineColor(4);//
-    rcsctwoenergy->SetLineWidth(6);
-    rcsctwoenergy->Draw("SAME");
+    scat_e_EcalEnd->SetLineColor(3);
+    scat_e_EcalEnd->SetLineWidth(6);
+    scat_e_EcalEnd->Draw("SAME");
     
-    TLegend *mctwoenergy = new TLegend(0.8, 0.8, 0.9, 0.9);
-    mctwoenergy->AddEntry(mcjpsitwoenergy,"MC JPsi e", "l");
-    mctwoenergy->AddEntry(mcsctwoenergy,"MC SC e", "l");
-    mctwoenergy->AddEntry(rcjpsitwoenergy,"RC JPsi e", "l");
-    mctwoenergy->AddEntry(rcsctwoenergy,"RC SC e", "l");
-    mctwoenergy->Draw();
+    TLegend *e_MC_RC_EcalEnd = new TLegend(0.8, 0.8, 0.9, 0.9);
+    e_MC_RC_EcalEnd->AddEntry(h2_e_MC,"Scat_e_MC", "l");
+    e_MC_RC_EcalEnd->AddEntry(scat_e_RC, "Scat_e_RC", "l");
+    e_MC_RC_EcalEnd->AddEntry(scat_e_EcalEnd, "Scat_e_EcalEnd", "l");
+    e_MC_RC_EcalEnd->Draw();
     
-    
-        return;
+    return;
         
 
 
 }
-
